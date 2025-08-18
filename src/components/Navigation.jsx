@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon, Cpu } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
-import SenseGridLogo from './assets/SensGrid_logo.png';
+
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2">
             {/* Replace text with your logo */}
             <img
-              src={SenseGridLogo}
+              src="/assets/SensGrid_logo.png"
               alt="SenseGrid Logo"
               className="h-8 w-auto"
             />
