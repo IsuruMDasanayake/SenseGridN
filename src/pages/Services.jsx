@@ -48,7 +48,7 @@ const Services = () => {
     }
   ];
 
-  const getColorClasses = (color: string) => {
+  const getColorClasses = (color) => {
     const colorMap = {
       blue: 'from-blue-500 to-blue-600 bg-blue-50 dark:bg-blue-900/10 text-blue-600 dark:text-blue-400',
       green: 'from-green-500 to-green-600 bg-green-50 dark:bg-green-900/10 text-green-600 dark:text-green-400',

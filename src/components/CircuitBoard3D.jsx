@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Box, Sphere, Cylinder } from '@react-three/drei';
+import { OrbitControls, Box, Cylinder } from '@react-three/drei';
 import * as THREE from 'three';
 
 const CircuitBoard = () => {
-  const groupRef = useRef<THREE.Group>(null);
+  const groupRef = useRef(null);
 
   useFrame((state) => {
     if (groupRef.current) {

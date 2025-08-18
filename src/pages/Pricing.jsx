@@ -66,7 +66,7 @@ const Pricing = () => {
     }
   ];
 
-  const getColorClasses = (color: string, popular?: boolean) => {
+  const getColorClasses = (color, popular) => {
     if (popular) {
       return 'border-green-500 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/10 dark:to-emerald-900/10';
     }
@@ -78,7 +78,7 @@ const Pricing = () => {
     return colorMap[color] || colorMap.blue;
   };
 
-  const getButtonClasses = (color: string, popular?: boolean) => {
+  const getButtonClasses = (color, popular) => {
     if (popular) {
       return 'bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:from-green-700 hover:to-emerald-700';
     }

@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-interface AnimatedCounterProps {
-  end: number;
-  duration?: number;
-  suffix?: string;
-  prefix?: string;
-}
-
-const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
+const AnimatedCounter = ({
   end,
   duration = 2,
   suffix = '',
@@ -16,19 +9,19 @@ const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
 }) => {
   const [count, setCount] = useState(0);
   const [hasAnimated, setHasAnimated] = useState(false);
-  const ref = React.useRef(null);
+  const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
     if (isInView && !hasAnimated) {
       setHasAnimated(true);
-      let startTime: number;
-      let animationFrame: number;
+      let startTime;
+      let animationFrame;
 
-      const animate = (timestamp: number) => {
+      const animate = (timestamp) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-        
+
         const easeOutCubic = 1 - Math.pow(1 - progress, 3);
         setCount(Math.floor(easeOutCubic * end));
 

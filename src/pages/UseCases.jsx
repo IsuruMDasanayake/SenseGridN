@@ -31,7 +31,7 @@ const UseCases = () => {
       }
     },
     {
-      client: 'Manufacturing Excellence',
+      client: 'DSI Production Monitor',
       industry: 'Industrial Manufacturing',
       image: 'https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop',
       problem: 'Large manufacturing plant struggled with unexpected equipment failures causing costly production downtime.',
@@ -55,33 +55,33 @@ const UseCases = () => {
         'Efficiency Gain': '60%',
         'Annual Savings': '$5M'
       }
-    },
-    {
-      client: 'Smart Agriculture',
-      industry: 'Agriculture & Farming',
-      image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop',
-      problem: 'Large-scale farm needed to optimize irrigation and monitor crop conditions across 10,000 acres.',
-      request: 'Comprehensive monitoring system for soil moisture, weather conditions, and crop health.',
-      solution: [
-        'Wireless soil moisture sensors every 100 meters',
-        'Weather stations with wind, temperature, and humidity monitoring',
-        'Drone integration for aerial crop imaging',
-        'AI-powered irrigation optimization',
-        'Mobile app for field workers'
-      ],
-      impact: [
-        'Reduced water usage by 30%',
-        'Increased crop yield by 25%',
-        'Lowered operational costs by 20%',
-        'Improved sustainability metrics significantly'
-      ],
-      metrics: {
-        'Water Savings': '30%',
-        'Yield Increase': '25%',
-        'Cost Reduction': '20%',
-        'Coverage Area': '10,000 acres'
-      }
     }
+    // {
+    //   client: 'Smart Agriculture',
+    //   industry: 'Agriculture & Farming',
+    //   image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop',
+    //   problem: 'Large-scale farm needed to optimize irrigation and monitor crop conditions across 10,000 acres.',
+    //   request: 'Comprehensive monitoring system for soil moisture, weather conditions, and crop health.',
+    //   solution: [
+    //     'Wireless soil moisture sensors every 100 meters',
+    //     'Weather stations with wind, temperature, and humidity monitoring',
+    //     'Drone integration for aerial crop imaging',
+    //     'AI-powered irrigation optimization',
+    //     'Mobile app for field workers'
+    //   ],
+    //   impact: [
+    //     'Reduced water usage by 30%',
+    //     'Increased crop yield by 25%',
+    //     'Lowered operational costs by 20%',
+    //     'Improved sustainability metrics significantly'
+    //   ],
+    //   metrics: {
+    //     'Water Savings': '30%',
+    //     'Yield Increase': '25%',
+    //     'Cost Reduction': '20%',
+    //     'Coverage Area': '10,000 acres'
+    //   }
+    // }
   ];
 
   return (
