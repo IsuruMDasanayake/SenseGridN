@@ -42,7 +42,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center space-x-2">
             {/* Replace text with your logo */}
             <img
-              src="public/images/SensGrid logo.png"
+              src={require(`./assets/${SensGrid_logo}.png`)}
               alt="SenseGrid Logo"
               className="h-8 w-auto"
             />
