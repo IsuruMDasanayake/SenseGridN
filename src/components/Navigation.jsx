@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Cpu } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
-
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const { darkMode, toggleDarkMode } = useTheme();
   const location = useLocation();
 
@@ -20,28 +20,39 @@ const Navigation = () => {
     { name: "Contact", path: "/contact" },
   ];
 
+  // Hide/show navbar only on mobile
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (window.innerWidth <= 768) {
+        if (window.scrollY > lastScrollY) {
+          // scrolling down → hide
+          setShowNavbar(false);
+        } else {
+          // scrolling up → show
+          setShowNavbar(true);
+        }
+        setLastScrollY(window.scrollY);
+      } else {
+        setShowNavbar(true); // always show on desktop
+      }
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   return (
     <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-lg"
-          : "bg-transparent"
-      }`}
+      initial={{ y: 0 }}
+      animate={{ y: showNavbar ? 0 : -100 }}
+      transition={{ duration: 0.3 }}
+      className={`fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-md shadow-md`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Keep navbar height fixed to avoid shifting */}
         <div className="flex justify-between items-center h-16">
+          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            {/* Replace text with your logo */}
             <img
               src="/assets/SensGrid_logo.png"
               alt="SenseGrid Logo"
@@ -82,9 +93,8 @@ const Navigation = () => {
             </button>
           </div>
 
-          {/* Mobile menu button */}
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-1 mr-10">
+          {/* Mobile buttons (theme + hamburger) */}
+          <div className="md:hidden flex items-center space-x-2">
             <button
               onClick={toggleDarkMode}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
@@ -99,17 +109,13 @@ const Navigation = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400"
             >
-              {isOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
