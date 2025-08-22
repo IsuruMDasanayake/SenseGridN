@@ -56,32 +56,6 @@ const UseCases = () => {
         'Annual Savings': '$5M'
       }
     }
-    // {
-    //   client: 'Smart Agriculture',
-    //   industry: 'Agriculture & Farming',
-    //   image: 'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=600&h=300&fit=crop',
-    //   problem: 'Large-scale farm needed to optimize irrigation and monitor crop conditions across 10,000 acres.',
-    //   request: 'Comprehensive monitoring system for soil moisture, weather conditions, and crop health.',
-    //   solution: [
-    //     'Wireless soil moisture sensors every 100 meters',
-    //     'Weather stations with wind, temperature, and humidity monitoring',
-    //     'Drone integration for aerial crop imaging',
-    //     'AI-powered irrigation optimization',
-    //     'Mobile app for field workers'
-    //   ],
-    //   impact: [
-    //     'Reduced water usage by 30%',
-    //     'Increased crop yield by 25%',
-    //     'Lowered operational costs by 20%',
-    //     'Improved sustainability metrics significantly'
-    //   ],
-    //   metrics: {
-    //     'Water Savings': '30%',
-    //     'Yield Increase': '25%',
-    //     'Cost Reduction': '20%',
-    //     'Coverage Area': '10,000 acres'
-    //   }
-    // }
   ];
 
   return (
@@ -101,20 +75,6 @@ const UseCases = () => {
               Discover how organizations across industries are transforming their 
               operations with SenseGrid's industrial IoT solutions.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">500+</div>
-                <p className="text-gray-600 dark:text-gray-300">Successful Deployments</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">$50M+</div>
-                <p className="text-gray-600 dark:text-gray-300">Cost Savings Generated</p>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-600 dark:text-purple-400 mb-2">15+</div>
-                <p className="text-gray-600 dark:text-gray-300">Industries Served</p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>

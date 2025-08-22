@@ -10,10 +10,12 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="p-2 bg-blue-600 rounded-lg">
-                <Cpu className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-xl font-bold">SENSEGRID</span>
+        
+              <img
+              src="/assets/SensGrid_logo.png"
+              alt="SenseGrid Logo"
+              className="h-8 w-auto"
+            />
             </div>
             <p className="text-gray-400 mb-4">
               Seamlessly integrate intelligence into your industrial operations with our cutting-edge IIoT solutions.

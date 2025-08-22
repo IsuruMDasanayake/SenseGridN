@@ -1,62 +1,62 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Thermometer, MapPin, Battery, Wifi, Gauge } from 'lucide-react';
+import { Shield, Thermometer, MapPin, Battery, Wifi, Gauge, Activity, Radio } from 'lucide-react';
 
 const Products = () => {
   const specifications = [
     { label: 'Operating Temperature', value: '-40°C to +85°C' },
-    { label: 'IP Rating', value: 'IP67 (Dust & Water Resistant)' },
-    { label: 'Battery Life', value: 'Up to 5 years' },
-    { label: 'Connectivity', value: 'LoRaWAN, NB-IoT, GSM' },
-    { label: 'Dimensions', value: '120mm × 80mm × 40mm' },
-    { label: 'Weight', value: '350g' },
-    { label: 'Sensors', value: 'Temperature, Humidity, Accelerometer, GPS' },
-    { label: 'Certification', value: 'CE, FCC, IC' }
+    { label: 'Enclosure Rating', value: 'IP67 (Dustproof & Waterproof)' },
+    { label: 'Battery Life', value: 'Up to 5 years (replaceable pack)' },
+    { label: 'Connectivity', value: 'GSM, NB-IoT, LoRaWAN, BLE' },
+    { label: 'Sensors', value: 'Temperature, Current, Vibration, GPS, Humidity' },
+    { label: 'Power Options', value: 'Battery, USB-C, or Solar (optional)' },
+    { label: 'Dimensions', value: '118mm × 76mm × 38mm' },
+    { label: 'Certifications', value: 'CE, FCC, IC' }
   ];
 
   const benefits = [
     {
       icon: Shield,
-      title: 'Industrial Grade Durability',
-      description: 'Built to withstand harsh industrial environments with IP67 rating'
+      title: 'Rugged & Reliable',
+      description: 'Industrial-grade enclosure (IP67) designed for factories, logistics, and outdoor use.'
     },
     {
       icon: Battery,
-      title: 'Long Battery Life',
-      description: 'Up to 5 years of continuous operation on a single battery charge'
+      title: 'Extended Battery Life',
+      description: 'Up to 5 years of autonomous operation — no frequent maintenance required.'
     },
     {
       icon: Wifi,
-      title: 'Multi-Network Connectivity',
-      description: 'Supports LoRaWAN, NB-IoT, and GSM for flexible deployment'
+      title: 'Flexible Connectivity',
+      description: 'Multiple wireless options: GSM, LoRaWAN, and NB-IoT ensure coverage anywhere.'
     },
     {
       icon: Gauge,
-      title: 'Real-time Monitoring',
-      description: 'Continuous data collection with instant alerts and notifications'
+      title: 'Smart Monitoring',
+      description: 'Real-time sensor data with cloud integration, anomaly detection, and instant alerts.'
     }
   ];
 
   const workflowSteps = [
     {
       step: 1,
-      title: 'Deploy Sensors',
-      description: 'Install Monitor One devices across your facility or equipment'
+      title: 'Install Device',
+      description: 'Mount Monitor One on machines, vehicles, or assets. No wiring required.'
     },
     {
       step: 2,
-      title: 'Connect Network',
-      description: 'Automatic network discovery and secure cloud connection'
+      title: 'Auto Connect',
+      description: 'Device automatically connects via GSM / LoRaWAN and syncs with the cloud.'
     },
     {
       step: 3,
-      title: 'Collect Data',
-      description: 'Continuous monitoring and data collection from all sensors'
+      title: 'Stream Data',
+      description: 'Continuously logs temperature, vibration, GPS, and electrical usage.'
     },
     {
       step: 4,
-      title: 'Analyze & Alert',
-      description: 'AI-powered analytics with real-time alerts and insights'
+      title: 'Analyze & Respond',
+      description: 'AI-powered analytics with instant notifications for failures or abnormal conditions.'
     }
   ];
 
@@ -74,22 +74,23 @@ const Products = () => {
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                 Monitor One
                 <span className="block text-2xl md:text-3xl text-blue-600 dark:text-blue-400 mt-2">
-                  Industrial IoT Sensor Platform
+                  Rugged Industrial IoT Device
                 </span>
               </h1>
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Rugged IP67-rated industrial sensor designed for harsh environments. 
-                Built for reliability, precision, and long-term deployment.
+                Monitor One is SenseGrid’s flagship IoT device built for industrial monitoring 
+                and logistics. It provides real-time insights into equipment, energy, and assets 
+                — anywhere in the world.
               </p>
               <div className="flex flex-wrap gap-4">
                 <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                  IP67 Rated
+                  IP67 Certified
                 </span>
                 <span className="px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
-                  5 Year Battery
+                  5-Year Battery
                 </span>
                 <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium">
-                  Multi-Network
+                  Global Connectivity
                 </span>
               </div>
             </motion.div>
@@ -102,8 +103,8 @@ const Products = () => {
             >
               <div className="bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl p-8 shadow-2xl">
                 <img
-                  src="https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop"
-                  alt="Monitor One Device"
+                  src="https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=500&h=400&fit=crop"
+                  alt="SenseGrid Monitor One Device"
                   className="w-full rounded-lg shadow-lg"
                 />
               </div>
@@ -111,7 +112,7 @@ const Products = () => {
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
                   <span className="text-sm font-medium text-gray-900 dark:text-white">
-                    Live Monitoring
+                    Device Online
                   </span>
                 </div>
               </div>
@@ -134,8 +135,8 @@ const Products = () => {
               Technical Specifications
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Engineered for industrial applications with precise specifications 
-              and rigorous testing standards.
+              Monitor One is engineered for reliability, scalability, and deployment 
+              in the toughest industrial conditions.
             </p>
           </motion.div>
 
@@ -175,8 +176,8 @@ const Products = () => {
               Key Benefits
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Monitor One delivers reliability and performance in the most demanding 
-              industrial environments.
+              From factory floors to cold chain logistics, Monitor One helps you 
+              track, optimize, and respond faster.
             </p>
           </motion.div>
 
@@ -223,13 +224,12 @@ const Products = () => {
               How It Works
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Simple deployment process with powerful monitoring capabilities 
-              from day one.
+              Deploy in minutes — start monitoring immediately with real-time insights.
             </p>
           </motion.div>
 
           <div className="relative">
-            {/* Connection Lines */}
+            {/* Connection Line */}
             <div className="hidden md:block absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 via-teal-500 to-blue-500 transform -translate-y-1/2 z-0"></div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
@@ -268,15 +268,15 @@ const Products = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Get Started?
+              Ready to Transform Your Operations?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Contact our team to discuss your specific requirements and get a 
-              custom quote for Monitor One deployment.
+              Get in touch with our team to explore deployment options and 
+              integrate SenseGrid Monitor One into your operations today.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-                Request Quote
+                Request a Demo
               </button>
               <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
                 Download Datasheet
