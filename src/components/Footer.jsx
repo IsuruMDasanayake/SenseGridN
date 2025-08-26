@@ -12,7 +12,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 mb-4">
         
               <img
-              src="/assets/SensGrid_logo.png"
+              src="/assets/images/SensGrid_logo.png"
               alt="SenseGrid Logo"
               className="h-8 w-auto"
             />

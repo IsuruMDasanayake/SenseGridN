@@ -54,7 +54,7 @@ const Navigation = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <img
-              src="/assets/SensGrid_logo.png"
+              src="/assets/images/SensGrid_logo.png"
               alt="SenseGrid Logo"
               className="h-8 w-auto"
             />
