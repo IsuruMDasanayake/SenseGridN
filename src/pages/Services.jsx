@@ -70,9 +70,12 @@ const Services = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-              Our Services
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 
+               bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
+               bg-clip-text text-transparent">
+  Our Services
+</h1>
+
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
               Comprehensive IIoT solutions designed to transform your industrial 
               operations with cutting-edge technology and expert support.
@@ -115,12 +118,6 @@ const Services = () => {
                       </span>
                     </div>
                   ))}
-                </div>
-
-                <div className="mt-8">
-                  <button className={`w-full py-3 px-4 rounded-lg ${getColorClasses(service.color).split(' ')[2]} ${getColorClasses(service.color).split(' ')[3]} font-semibold hover:opacity-80 transition-opacity`}>
-                    Learn More
-                  </button>
                 </div>
               </motion.div>
             ))}
