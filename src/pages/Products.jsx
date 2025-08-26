@@ -126,21 +126,18 @@ const Products = () => {
               className="relative"
             >
               <div className="relative inline-block w-[580px] max-w-full mx-auto lg:ml-20">
-  {/* Gradient Glow Background */}
-  <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-2xl blur-xl"></div>
+                {/* Gradient Glow Background */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-2xl blur-xl"></div>
 
-  {/* Image Container */}
-  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-    <img
-      src="/assets/images/abstract-1.png"
-      alt="SenseGrid Monitor One Device"
-      className="mx-auto w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px] object-contain rounded-xl"
-    />
-  </div>
-</div>
-
-
-              
+                {/* Image Container */}
+                <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+                  <img
+                    src="/assets/images/abstract-1.png"
+                    alt="SenseGrid Monitor One Device"
+                    className="mx-auto w-full h-[260px] sm:h-[320px] md:h-[380px] lg:h-[420px] object-contain rounded-xl"
+                  />
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
