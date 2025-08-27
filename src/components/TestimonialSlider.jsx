@@ -1,5 +1,4 @@
 "use client";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
@@ -58,16 +57,12 @@ export default function TestimonialSlider() {
           modules={[Navigation, Autoplay]}
           loop={true}
           speed={800}
-          autoplay={{ delay: 5000 }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           spaceBetween={30}
-          slidesPerView={1}
+          slidesPerView={2} // Always 2 slides visible
           navigation={{
             nextEl: ".slider-next",
             prevEl: ".slider-prev",
-          }}
-          breakpoints={{
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
           }}
           className="pb-12"
         >
@@ -78,7 +73,7 @@ export default function TestimonialSlider() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl transition-all h-full flex flex-col"
+                className="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-md hover:shadow-xl h-full flex flex-col"
               >
                 <div className="flex items-center mb-4">
                   <img
@@ -104,7 +99,7 @@ export default function TestimonialSlider() {
         </Swiper>
 
         {/* Custom Navigation */}
-        <div className="flex justify-center space-x-4 mt-6">
+        <div className="flex justify-center space-x-4 mt-0">
           <button className="slider-prev px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500">
             ◀
           </button>
