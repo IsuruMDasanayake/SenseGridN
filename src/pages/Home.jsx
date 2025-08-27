@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import CircuitBoard3D from "../components/CircuitBoard3D";
 import AnimatedCounter from "../components/AnimatedCounter";
+import TestimonialSlider from "../components/TestimonialSlider";
+
 
 const Home = () => {
   const features = [
@@ -288,6 +290,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      <TestimonialSlider />
+
     </div>
   );
 };
