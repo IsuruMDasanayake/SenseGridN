@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { Linkedin, Twitter, Facebook } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    phone: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    company: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -27,12 +28,12 @@ const Contact = () => {
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        company: '',
-        phone: '',
-        subject: '',
-        message: ''
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        subject: "",
+        message: "",
       });
     }, 3000);
   };
@@ -40,28 +41,28 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: 'Email',
-      value: 'hello@sensegrid.com',
-      description: 'Send us an email anytime'
+      title: "Email",
+      value: "hello@sensegrid.com",
+      description: "Send us an email anytime",
     },
     {
       icon: Phone,
-      title: 'Phone',
-      value: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 8am to 6pm'
+      title: "Phone",
+      value: "+1 (555) 123-4567",
+      description: "Mon-Fri from 8am to 6pm",
     },
     {
       icon: MapPin,
-      title: 'Office',
-      value: '123 Innovation Drive, San Francisco, CA 94105',
-      description: 'Come say hello at our HQ'
+      title: "Office",
+      value: "123 Innovation Drive, San Francisco, CA 94105",
+      description: "Come say hello at our HQ",
     },
     {
       icon: Clock,
-      title: 'Business Hours',
-      value: 'Monday - Friday: 8am - 6pm PST',
-      description: 'Weekend: By appointment'
-    }
+      title: "Business Hours",
+      value: "Monday - Friday: 8am - 6pm PST",
+      description: "Weekend: By appointment",
+    },
   ];
 
   return (
@@ -74,14 +75,16 @@ const Contact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 
+            <h1
+              className="text-4xl md:text-6xl font-bold mb-6 
                bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
-               bg-clip-text text-transparent">
+               bg-clip-text text-transparent"
+            >
               Get in Touch
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
-              Have questions about our IoT solutions? We'd love to hear from you. 
-              Send us a message and we'll respond as soon as possible.
+              Have questions about our IoT solutions? We'd love to hear from
+              you. Send us a message and we'll respond as soon as possible.
             </p>
           </motion.div>
         </div>
@@ -103,8 +106,9 @@ const Contact = () => {
                 Contact Information
               </h2>
               <p className="text-gray-600 dark:text-gray-300 mb-8">
-                We're here to help you transform your industrial operations with 
-                cutting-edge IoT solutions. Reach out to us through any of these channels.
+                We're here to help you transform your industrial operations with
+                cutting-edge IoT solutions. Reach out to us through any of these
+                channels.
               </p>
 
               <div className="space-y-6">
@@ -141,7 +145,30 @@ const Contact = () => {
                   Follow Us
                 </h3>
                 <div className="flex space-x-4">
-                  {/* social icons */}
+                  <a
+                    href="https://www.linkedin.com/company/sensegrid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </a>
+                  <a
+                    href="https://twitter.com/sensegrid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-colors"
+                  >
+                    <Twitter className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/sensegrid"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-3 bg-blue-100 dark:bg-blue-900/20 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-800/30 transition-colors"
+                  >
+                    <Facebook className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -170,12 +197,99 @@ const Contact = () => {
                       Message Sent Successfully!
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Thank you for reaching out. We'll get back to you within 24 hours.
+                      Thank you for reaching out. We'll get back to you within
+                      24 hours.
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* form fields */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                          Name
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                          Email
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                          Company
+                        </label>
+                        <input
+                          type="text"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                          Phone
+                        </label>
+                        <input
+                          type="text"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                        Subject
+                      </label>
+                      <input
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block text-gray-700 dark:text-gray-300 mb-2">
+                        Message
+                      </label>
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        rows={5}
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full md:w-auto px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                    >
+                      Send Message
+                    </button>
                   </form>
                 )}
               </div>
@@ -198,7 +312,7 @@ const Contact = () => {
               Visit Our Office
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              We're located in the heart of San Francisco's innovation district. 
+              We're located in the heart of San Francisco's innovation district.
               Drop by for a coffee and let's discuss your IoT project.
             </p>
           </motion.div>
@@ -208,17 +322,17 @@ const Contact = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="rounded-2xl overflow-hidden shadow-2xl h-96 bg-gray-200 dark:bg-gray-700 flex items-center justify-center"
+            className="rounded-2xl overflow-hidden shadow-2xl h-96 w-full"
           >
-            <div className="text-center">
-              <MapPin className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-600 dark:text-gray-300 text-lg">
-                Interactive map would be embedded here
-              </p>
-              <p className="text-gray-500 dark:text-gray-400 mt-2">
-                123 Innovation Drive, San Francisco, CA 94105
-              </p>
-            </div>
+            <iframe
+              src="https://www.google.com/maps?q=6.9346212,79.8468999&hl=en&z=17&output=embed"
+              width="100%"
+              height="100%"
+              className="border-0"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
           </motion.div>
         </div>
       </section>
