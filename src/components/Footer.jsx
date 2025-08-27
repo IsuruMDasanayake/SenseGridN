@@ -109,7 +109,7 @@ const Footer = () => {
                   Pricing
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <a
                   href="#"
                   className="text-gray-400 hover:text-white transition-colors"
@@ -124,7 +124,7 @@ const Footer = () => {
                 >
                   API Reference
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
 

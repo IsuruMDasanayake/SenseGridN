@@ -59,7 +59,10 @@ export default function TestimonialSlider() {
           speed={800}
           autoplay={{ delay: 5000, disableOnInteraction: false }}
           spaceBetween={30}
-          slidesPerView={2} // Always 2 slides visible
+          slidesPerView={1} // default for small screens
+          breakpoints={{
+            768: { slidesPerView: 2 }, // 2 cards on desktop (1024px and up)
+          }}
           navigation={{
             nextEl: ".slider-next",
             prevEl: ".slider-prev",
