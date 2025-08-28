@@ -112,6 +112,7 @@ const Services = () => {
           >
             <h1
               className="text-4xl md:text-6xl font-bold mb-6 
+               leading-tight md:leading-[1.3] 
                bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
                bg-clip-text text-transparent"
             >

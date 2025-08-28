@@ -100,18 +100,21 @@ const Pricing = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 
+            <h1
+              className="text-4xl md:text-6xl font-bold mb-6 
+               leading-tight md:leading-[1.3] 
                bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
-               bg-clip-text text-transparent">
+               bg-clip-text text-transparent"
+            >
               Simple, Transparent Pricing
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12 mt-5">
               Choose the plan that fits your needs. No hidden fees, no surprises. 
               Scale up or down as your business grows.
             </p>
 
             {/* Billing Toggle */}
-            <div className="flex items-center justify-center mb-12">
+            {/* <div className="flex items-center justify-center mb-12">
               <span className={`mr-3 text-sm font-medium ${!isAnnual ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400'}`}>
                 Monthly
               </span>
@@ -133,7 +136,7 @@ const Pricing = () => {
               <span className="ml-2 px-2 py-1 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 text-xs rounded-full">
                 Save 16%
               </span>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </section>

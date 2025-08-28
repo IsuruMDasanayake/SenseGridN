@@ -13,6 +13,7 @@ import {
 import CircuitBoard3D from "../components/CircuitBoard3D";
 import AnimatedCounter from "../components/AnimatedCounter";
 import TestimonialSlider from "../components/TestimonialSlider";
+import BlogSlider from "../components/BlogSlider";
 
 
 const Home = () => {
@@ -164,6 +165,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      <BlogSlider />
 
       {/* About Section */}
       <section className="py-20 bg-white dark:bg-gray-800">
