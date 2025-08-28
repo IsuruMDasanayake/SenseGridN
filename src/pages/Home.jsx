@@ -139,7 +139,7 @@ const Home = () => {
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
                 <Link
-                  to="/projects"
+                  to="/use-cases"
                   className="relative inline-flex items-center px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl group overflow-hidden"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 bg-[length:200%_100%] bg-[position:var(--x,0)_0] transition-all duration-500 group-hover:[--x:100%] rounded-lg"></span>
