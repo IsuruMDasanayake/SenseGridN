@@ -44,15 +44,15 @@ const BlogSlider = () => {
       viewport={{ once: true }}
     >
       {/* Outer container 90% width, curved */}
-      <div className="w-[90%] bg-gray-800 border border-gray-600 rounded-2xl shadow-xl p-8 flex flex-col lg:flex-row">
+      <div className="w-[90%] bg-white dark:bg-gray-800 border dark:border-gray-600 rounded-2xl shadow-xl p-8 flex flex-col lg:flex-row">
         
         {/* Left Section - 1/4 */}
         <div className="lg:w-1/4 w-full mb-6 lg:mb-0 pr-6 flex flex-col justify-between">
           <div>
-            <h1 className="mb-3 text-white text-2xl font-bold">
+            <h1 className="mb-3 text-gray-900 dark:text-white text-2xl font-bold">
               Latest Articles
             </h1>
-            <p className="text-gray-400 text-base leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
               Explore our latest insights on IoT, Energy, and Smart Solutions.
             </p>
           </div>
