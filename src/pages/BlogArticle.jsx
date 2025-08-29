@@ -200,6 +200,7 @@ const BlogArticle = () => {
         </div>
 
         {/* Article Content */}
+        <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 mb-12">
         <article
           className="
               max-w-4xl mx-auto
@@ -223,6 +224,7 @@ const BlogArticle = () => {
           "
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+        </div>
       </div>
 
       {/* Tags Section */}
