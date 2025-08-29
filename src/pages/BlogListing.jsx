@@ -83,52 +83,55 @@ const BlogListing = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden 
-                           hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
+                     hover:shadow-2xl hover:scale-[1.02] transition-transform duration-300"
               >
-                <a
-                  href={`/blog/${article.slug}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <div className="relative">
-                    <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-64 object-cover"
-                    />
-                    <div className="p-6">
-                      <h2 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
-                        {article.title}
-                      </h2>
+                <div className="relative">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-64 object-cover"
+                  />
+                  <div className="p-6">
+                    <h2 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
+                      {article.title}
+                    </h2>
 
-                      <div className="flex items-center space-x-4 mb-4">
-                        {/* Author Image */}
-                        <img
-                          src={article.authorImage}
-                          alt={article.author}
-                          className="w-8 h-8 rounded-full object-cover"
-                        />
-                        <span className="flex items-center text-gray-500 dark:text-gray-400">
-                          <User className="h-4 w-4 mr-1" /> {article.author}
-                        </span>
-                        <span className="flex items-center text-gray-500 dark:text-gray-400">
-                          <Calendar className="h-4 w-4 mr-1" /> {article.date}
-                        </span>
-                      </div>
+                    <div className="flex items-center space-x-4 mb-4">
+                      {/* Author Image */}
+                      <img
+                        src={article.authorImage}
+                        alt={article.author}
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
+                      <span className="flex items-center text-gray-500 dark:text-gray-400">
+                        <User className="h-4 w-4 mr-1" /> {article.author}
+                      </span>
+                      <span className="flex items-center text-gray-500 dark:text-gray-400">
+                        <Calendar className="h-4 w-4 mr-1" /> {article.date}
+                      </span>
+                    </div>
 
-                      <p className="text-gray-700 dark:text-gray-300 line-clamp-3 mb-4">
-                        {/* Optional short excerpt */}
-                      </p>
+                    <p className="text-gray-700 dark:text-gray-300 line-clamp-3 mb-4">
+                      {/* Optional short excerpt */}
+                    </p>
 
-                      {/* Read More Button */}
-                      <div>
-                        <span className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-semibold py-2 px-8 rounded-lg transition-all cursor-pointer">
-                          Read More
-                        </span>
-                      </div>
+                    {/* Read More Button Only Clickable */}
+                    <div className="group">
+                      <a
+                        href={`/blog/${article.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500
+                             bg-[length:200%_100%] bg-[position:var(--x,0)_0]
+                             text-white font-semibold py-2 px-8 rounded-lg
+                             transition-all duration-500
+                             group-hover:[--x:100%]"
+                      >
+                        Read More
+                      </a>
                     </div>
                   </div>
-                </a>
+                </div>
               </motion.div>
             ))}
           </div>

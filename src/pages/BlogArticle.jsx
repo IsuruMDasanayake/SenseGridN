@@ -176,14 +176,26 @@ const BlogArticle = () => {
             {article.title}
           </motion.h1>
 
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl">
+          <motion.p
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {article.excerpt}
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Hero Image */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
+      <motion.div
+        className="max-w-5xl mx-auto px-4 py-8"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <img
           src={article.image}
           alt={article.title}
@@ -201,8 +213,8 @@ const BlogArticle = () => {
 
         {/* Article Content */}
         <div className="bg-white dark:bg-gray-800 shadow-lg rounded-2xl p-8 mb-12">
-        <article
-          className="
+          <article
+            className="
               max-w-4xl mx-auto
             text-gray-700 dark:text-gray-300 leading-relaxed
     
@@ -222,10 +234,10 @@ const BlogArticle = () => {
     
             [&>a]:text-sky-600 dark:[&>a]:text-sky-400 hover:[&>a]:underline
           "
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+            dangerouslySetInnerHTML={{ __html: article.content }}
+          />
         </div>
-      </div>
+      </motion.div>
 
       {/* Tags Section */}
       <div className="max-w-5xl mx-auto px-4 py-6 border-t border-gray-200 dark:border-gray-700">
@@ -276,12 +288,20 @@ const BlogArticle = () => {
             className="w-full p-3 rounded-lg border dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200"
             placeholder="Write a comment..."
           />
-          <button
-            type="submit"
-            className="mt-4 px-6 py-2 bg-sky-600 text-white rounded-lg hover:bg-sky-700"
-          >
-            Post Comment
-          </button>
+          <div className="mt-4 inline-block group">
+            <button
+              type="submit"
+              className="px-6 py-2
+                 bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500
+                 bg-[length:200%_100%] bg-[position:var(--x,0)_0]
+                 text-white font-semibold
+                 rounded-lg
+                 transition-all duration-500
+                 group-hover:[--x:100%]"
+            >
+              Post Comment
+            </button>
+          </div>
         </form>
       </div>
     </div>
