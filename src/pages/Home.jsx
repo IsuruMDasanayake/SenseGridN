@@ -209,14 +209,14 @@ const Home = () => {
               </p>
             </motion.div> */}
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
               className="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-md"
             >
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
+              <h3 className="text-2xl text-center font-semibold text-gray-900 dark:text-white mb-4">
                 Why SenseGrid?
               </h3>
               <p className="text-gray-600 dark:text-gray-300">
@@ -225,7 +225,7 @@ const Home = () => {
                 battery-efficient, and GSM-ready for deployments where Wi-Fi is
                 not an option.
               </p>
-            </motion.div>
+            </motion.div> */}
 
             {/* <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -258,7 +258,7 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Why You Choose SenseGrid?
+              Why Choose SenseGrid?
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Trusted by leading enterprises for industrial monitoring and
