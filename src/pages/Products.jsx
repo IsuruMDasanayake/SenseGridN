@@ -3,53 +3,52 @@ import { motion } from "framer-motion";
 import {
   Shield,
   Thermometer,
-  MapPin,
+  Activity,
   Battery,
   Wifi,
   Gauge,
-  Activity,
-  Radio,
+  Bell,
 } from "lucide-react";
 
 const Products = () => {
   const specifications = [
-    { label: "Operating Temperature", value: "-40°C to +85°C" },
-    { label: "Enclosure Rating", value: "IP67 (Dustproof & Waterproof)" },
-    { label: "Battery Life", value: "Up to 5 years (replaceable pack)" },
-    { label: "Connectivity", value: "GSM, NB-IoT, LoRaWAN, BLE" },
+    { label: "Operating Temperature", value: "-20°C to +70°C" },
+    { label: "Enclosure Rating", value: "IP65 (Dust & Splash Resistant)" },
+    { label: "Power Options", value: "Direct AC (Primary), with backup support" },
+    { label: "Connectivity", value: "GSM, NB-IoT, LoRaWAN" },
     {
       label: "Sensors",
-      value: "Temperature, Current, Vibration, GPS, Humidity",
+      value: "Current, Temperature, Humidity, Infrared (Condition Monitoring)",
     },
-    { label: "Power Options", value: "Battery, USB-C, or Solar (optional)" },
-    { label: "Dimensions", value: "118mm × 76mm × 38mm" },
-    { label: "Certifications", value: "CE, FCC, IC" },
+    { label: "Dashboard", value: "Cloud-based, with export & analytics" },
+    { label: "Dimensions", value: "Compact, industrial-ready design" },
+    { label: "Customer Support", value: "Provided by SLT-Mobitel Digital Labs" },
   ];
 
   const benefits = [
     {
       icon: Shield,
-      title: "Rugged & Reliable",
+      title: "Industrial-Grade",
       description:
-        "Industrial-grade enclosure (IP67) designed for factories, logistics, and outdoor use.",
+        "Rugged design for factories, warehouses, and logistics environments.",
     },
     {
       icon: Battery,
-      title: "Extended Battery Life",
+      title: "Reliable Power",
       description:
-        "Up to 5 years of autonomous operation — no frequent maintenance required.",
+        "Plugs directly into AC power with backup options for uninterrupted monitoring.",
     },
     {
       icon: Wifi,
-      title: "Flexible Connectivity",
+      title: "Multiple Connectivity",
       description:
-        "Multiple wireless options: GSM, LoRaWAN, and NB-IoT ensure coverage anywhere.",
+        "GSM, LoRaWAN, and NB-IoT ensure data flows even without Wi-Fi or LAN.",
     },
     {
       icon: Gauge,
-      title: "Smart Monitoring",
+      title: "Real-Time Monitoring",
       description:
-        "Real-time sensor data with cloud integration, anomaly detection, and instant alerts.",
+        "Live dashboards and alerts provide clear insights into machine health and environment.",
     },
   ];
 
@@ -58,25 +57,25 @@ const Products = () => {
       step: 1,
       title: "Install Device",
       description:
-        "Mount Monitor One on machines, vehicles, or assets. No wiring required.",
+        "Mount the Monitor One unit on machines or in warehouses — simple and quick setup.",
     },
     {
       step: 2,
-      title: "Auto Connect",
+      title: "Connect Wirelessly",
       description:
-        "Device automatically connects via GSM / LoRaWAN and syncs with the cloud.",
+        "Device transmits securely via GSM, NB-IoT, or LoRaWAN depending on location.",
     },
     {
       step: 3,
       title: "Stream Data",
       description:
-        "Continuously logs temperature, vibration, GPS, and electrical usage.",
+        "Continuously tracks current, temperature, humidity, and machine conditions.",
     },
     {
       step: 4,
-      title: "Analyze & Respond",
+      title: "Monitor & Respond",
       description:
-        "AI-powered analytics with instant notifications for failures or abnormal conditions.",
+        "Cloud dashboards provide alerts, reports, and insights to reduce downtime and optimize costs.",
     },
   ];
 
@@ -93,28 +92,28 @@ const Products = () => {
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
                 <span className="bg-gradient-to-r from-sky-500 via-cyan-400 to-sky-500 bg-[length:200%_200%] animate-gradient bg-clip-text text-transparent">
-                  Monitor One
+                  IoT Monitoring Device
                 </span>
-                <span className="block text-2xl md:text-3xl text-gray-900 dark:text-white mt-2">
-                  Rugged Industrial IoT Device
-                </span>
+                {/* <span className="block text-2xl md:text-3xl text-gray-900 dark:text-white mt-2">
+                  Industrial IoT Monitoring Device
+                </span> */}
               </h1>
 
               <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
-                Monitor One is SenseGrid’s flagship IoT device built for
-                industrial monitoring and logistics. It provides real-time
-                insights into equipment, energy, and assets — anywhere in the
-                world.
+                SenseGrid is flagship IoT solution, designed for
+                machine condition and environment monitoring. It provides
+                real-time insights into equipment health, energy usage, and
+                safety conditions — all through a cloud dashboard.
               </p>
               <div className="flex flex-wrap gap-4">
                 <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                  IP67 Certified
+                  Industrial-Grade
                 </span>
                 <span className="px-4 py-2 bg-green-100 dark:bg-green-900/20 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
-                  5-Year Battery
+                  Reliable Connectivity
                 </span>
                 <span className="px-4 py-2 bg-purple-100 dark:bg-purple-900/20 text-purple-800 dark:text-purple-200 rounded-full text-sm font-medium">
-                  Global Connectivity
+                  Cloud Dashboard
                 </span>
               </div>
             </motion.div>
@@ -157,8 +156,9 @@ const Products = () => {
               Technical Specifications
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Monitor One is engineered for reliability, scalability, and
-              deployment in the toughest industrial conditions.
+              Monitor One is engineered for continuous operation in demanding
+              industrial environments, with dependable sensors and secure
+              connectivity.
             </p>
           </motion.div>
 
@@ -198,8 +198,8 @@ const Products = () => {
               Key Benefits
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              From factory floors to cold chain logistics, Monitor One helps you
-              track, optimize, and respond faster.
+              From factory floors to warehouse monitoring, Monitor One helps you
+              track conditions, prevent downtime, and make smarter decisions.
             </p>
           </motion.div>
 
@@ -246,8 +246,8 @@ const Products = () => {
               How It Works
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Deploy in minutes — start monitoring immediately with real-time
-              insights.
+              Deploy in minutes — start monitoring immediately with live
+              dashboards and alerts.
             </p>
           </motion.div>
 

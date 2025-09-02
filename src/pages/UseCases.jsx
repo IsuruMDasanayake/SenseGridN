@@ -1,69 +1,70 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const UseCases = () => {
   const [activeCase, setActiveCase] = useState(null);
 
   const caseStudies = [
     {
-      client: "DHL Asset Tracker",
-      industry: "Logistics & Supply Chain",
+      client: "DHL Warehouse Monitoring",
+      industry: "Logistics & Cold Storage",
       image: "/assets/images/dhl.png",
       shortDescription:
-        "DHL needed a compact, reliable tracking solution for sensitive shipments, ensuring temperature control, real-time GPS updates, and automated alerts across multiple countries. The system needed to integrate seamlessly with existing logistics workflows, improve visibility for cold chain products, and minimize delays or losses for high-value shipments.",
+        "DHL required a reliable system to monitor warehouse temperature conditions across multiple sites. With real-time visibility, alerts, and analytics, DHL ensured compliance and prevented losses in cold storage operations.",
       problem:
-        "DHL faced difficulty in tracking sensitive packages during cross-country deliveries, especially temperature-sensitive medical supplies.",
+        "Maintaining precise temperature conditions in warehouses was critical, but manual checks often led to delays, compliance risks, and potential losses in temperature-sensitive goods.",
       request:
-        "Needed compact device with GPS tracking, GSM alerts, and temperature logging for cold chain logistics.",
+        "Needed a reliable solution with multiple temperature sensors, real-time alerts, and centralized dashboards to ensure safe cold storage operations.",
       solution: [
-        "GPS live updates with 5-meter accuracy",
-        "High-accuracy temperature sensor (-40°C to +85°C)",
-        "GSM module for real-time cloud synchronization",
-        "Rechargeable battery with 72-hour continuous operation",
-        "Integrated with SenseGrid dashboard for fleet management",
+        "6 high-accuracy temperature sensors deployed across key warehouse zones",
+        "Automated alerts when temperature thresholds exceeded",
+        "Centralized SenseGrid dashboard for real-time monitoring",
+        "Analytics and reporting with data export capabilities",
+        "Remote access for warehouse managers and compliance teams",
       ],
       impact: [
-        "Reduced temperature-related disputes by 90%",
-        "Ensured compliance with pharmaceutical standards",
-        "Improved customer satisfaction scores by 35%",
-        "Saved $2M annually in damaged goods compensation",
+        "Eliminated manual monitoring delays",
+        "Improved compliance with cold chain standards",
+        "Minimized product loss from temperature fluctuations",
+        "Provided full visibility for regional managers",
       ],
       metrics: {
-        "Dispute Reduction": "90%",
-        "Cost Savings": "$2M/year",
-        "Satisfaction Increase": "35%",
-        "Deployment Time": "2 weeks",
+        "Compliance Reliability": "100%",
+        "Product Loss Reduction": "Significant",
+        "Warehouses Connected": "Multiple",
+        "Deployment Time": "3 weeks",
       },
     },
     {
-      client: "DSI Production Monitor",
+      client: "DSI Machine Condition Monitoring",
       industry: "Industrial Manufacturing",
       image: "/assets/images/dsi.jpg",
       shortDescription:
-        "DSI sought a predictive maintenance solution to reduce unplanned downtime, monitor critical machinery, and optimize production efficiency. The goal was to leverage IoT sensors and data analytics to anticipate equipment failures, streamline maintenance scheduling, and boost overall productivity while reducing operational costs.",
+        "DSI integrated SenseGrid sensors to monitor machine health in real time. With current and infrared sensors connected to a unified dashboard, DSI reduced downtime and improved maintenance planning.",
       problem:
-        "Large manufacturing plant struggled with unexpected equipment failures causing costly production downtime.",
+        "Unexpected machine breakdowns were disrupting production and creating costly downtime in manufacturing operations.",
       request:
-        "Predictive maintenance solution for critical machinery to prevent unplanned downtime.",
+        "Needed a system to monitor machine health (current and infrared) and provide dashboards for analytics and predictive maintenance scheduling.",
       solution: [
-        "Vibration and temperature sensors on critical equipment",
-        "Machine learning algorithms for failure prediction",
-        "Real-time alerts for maintenance teams",
-        "Integration with existing CMMS system",
-        "Custom dashboard for maintenance planning",
+        "Current sensors to track machine power usage",
+        "Infrared sensors for monitoring machine surface conditions",
+        "SenseGrid dashboard with real-time visualization and export",
+        "Threshold-based alerts for abnormal readings",
+        "Analytics tools for identifying recurring machine issues",
       ],
       impact: [
-        "Reduced unplanned downtime by 75%",
-        "Extended equipment lifespan by 40%",
-        "Improved maintenance efficiency by 60%",
-        "Saved $5M in avoided production losses",
+        "Reduced unplanned machine downtime",
+        "Enabled proactive maintenance scheduling",
+        "Improved machine utilization rates",
+        "Enhanced operational efficiency across production lines",
       ],
       metrics: {
-        "Downtime Reduction": "75%",
-        "Equipment Lifespan": "+40%",
-        "Efficiency Gain": "60%",
-        "Annual Savings": "$5M",
+        "Downtime Reduction": "High",
+        "Maintenance Efficiency": "Improved",
+        "Machines Covered": "Multiple Lines",
+        "Deployment Time": "4 weeks",
       },
     },
   ];
@@ -87,8 +88,8 @@ const UseCases = () => {
               Success Stories
             </h1>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
-              Discover how organizations across industries are transforming
-              their operations with SenseGrid's industrial IoT solutions.
+              See how enterprises are using SenseGrid to monitor environments,
+              track machine health, and ensure operational reliability.
             </p>
           </motion.div>
         </div>
@@ -285,8 +286,8 @@ const UseCases = () => {
               Industries We Serve
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Our solutions have been successfully deployed across diverse
-              industries, each with unique challenges and requirements.
+              SenseGrid solutions are adaptable across industries requiring
+              reliable monitoring, data insights, and safe environments.
             </p>
           </motion.div>
 
@@ -295,32 +296,32 @@ const UseCases = () => {
               {
                 name: "Manufacturing",
                 icon: "🏭",
-                description: "Predictive maintenance and quality control",
+                description: "Machine health and downtime prevention",
               },
               {
                 name: "Logistics",
                 icon: "🚛",
-                description: "Asset tracking and cold chain monitoring",
+                description: "Warehouse and fleet monitoring",
               },
               {
                 name: "Agriculture",
                 icon: "🌾",
-                description: "Smart farming and precision agriculture",
+                description: "Environmental and crop condition tracking",
               },
               {
                 name: "Energy",
                 icon: "⚡",
-                description: "Grid monitoring and renewable energy",
+                description: "Power usage and grid condition monitoring",
               },
               {
                 name: "Healthcare",
                 icon: "🏥",
-                description: "Medical device monitoring and compliance",
+                description: "Cold storage and equipment monitoring",
               },
               {
                 name: "Mining",
                 icon: "⛏️",
-                description: "Safety monitoring and equipment tracking",
+                description: "Equipment safety and environmental checks",
               },
             ].map((industry, index) => (
               <motion.div
@@ -359,17 +360,20 @@ const UseCases = () => {
               Ready to Write Your Success Story?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Join hundreds of organizations that have transformed their
-              operations with SenseGrid. Let's discuss your specific challenges
-              and goals.
+              SenseGrid delivers end-to-end solutions — from sensors to
+              dashboards. Let’s discuss how we can support your operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
-                Schedule Consultation
-              </button>
-              <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
-                View More Case Studies
-              </button>
+              <Link to="/contact">
+                <button className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+                  Schedule Consultation
+                </button>
+              </Link>
+              <Link to="/contact">
+                <button className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition-colors">
+                  Request Demo
+                </button>
+              </Link>
             </div>
           </motion.div>
         </div>

@@ -42,25 +42,25 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "hello@sensegrid.com",
+      value: "info@sltdigitallab.lk",
       description: "Send us an email anytime",
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
-      description: "Mon-Fri from 8am to 6pm",
+      value: "+94112430010",
+      description: "Mon-Fri from 8.30 AM to 4.30 PM",
     },
     {
       icon: MapPin,
       title: "Office",
-      value: "123 Innovation Drive, San Francisco, CA 94105",
+      value: "PO Box 503, Lotus Rd, Colombo 01, Sri Lanka",
       description: "Come say hello at our HQ",
     },
     {
       icon: Clock,
       title: "Business Hours",
-      value: "Monday - Friday: 8am - 6pm PST",
+      value: "Monday - Friday: 8.30 AM - 4.30 PM PST",
       description: "Weekend: By appointment",
     },
   ];
@@ -286,9 +286,17 @@ const Contact = () => {
 
                     <button
                       type="submit"
-                      className="w-full md:w-auto px-8 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+                      className="relative w-full md:w-auto px-8 py-3 text-white font-semibold rounded-lg overflow-hidden group"
                     >
-                      Send Message
+                      {/* Animated Gradient Background */}
+                      <span
+                        className="absolute inset-0 bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
+                   bg-[length:200%_100%] bg-[position:var(--x,0)_0] 
+                   transition-all duration-500 group-hover:[--x:100%] rounded-lg"
+                      ></span>
+
+                      {/* Button Text */}
+                      <span className="relative">Send Message</span>
                     </button>
                   </form>
                 )}

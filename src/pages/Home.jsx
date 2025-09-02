@@ -6,8 +6,8 @@ import {
   Activity,
   Thermometer,
   Satellite,
+  Cpu,
   Wifi,
-  TrendingUp,
   Zap,
 } from "lucide-react";
 import CircuitBoard3D from "../components/CircuitBoard3D";
@@ -15,76 +15,43 @@ import AnimatedCounter from "../components/AnimatedCounter";
 import TestimonialSlider from "../components/TestimonialSlider";
 import BlogSlider from "../components/BlogSlider";
 
-
 const Home = () => {
   const features = [
     {
       icon: Thermometer,
       title: "Environmental Monitoring",
       description:
-        "Track temperature, humidity, and machine health in real-time with industrial-grade sensors.",
+        "Track temperature, humidity, and critical machine conditions in real time with industrial-grade sensors.",
     },
     {
       icon: Activity,
       title: "Energy & Machine Insights",
       description:
-        "Capture current, power usage, and machine uptime to reduce downtime and optimize costs.",
+        "Measure AC current, power usage, and machine uptime to reduce downtime and optimize costs.",
     },
     {
       icon: Satellite,
       title: "Reliable Connectivity",
       description:
-        "GSM-powered data transfer ensures connectivity without Wi-Fi or LAN dependency.",
+        "Multiple wireless options — GSM, LoRaWAN, and NB-IoT — ensure connectivity anywhere, without Wi-Fi or LAN.",
     },
     {
-      icon: Zap,
-      title: "Rapid Deployment",
+      icon: Cpu,
+      title: "Anomaly Detection",
       description:
-        "Plug-and-play devices deployed in hours, not weeks — designed for field-ready use.",
+        "Real-time anomaly alerts notify you of unusual conditions, helping prevent costly breakdowns and unplanned downtime.",
     },
     {
       icon: Wifi,
       title: "Cloud Dashboard",
       description:
-        "Centralized dashboard for real-time visualization, anomaly alerts, and decision-making.",
+        "A centralized dashboard for real-time visualization, data export, analytics, and decision-making.",
     },
     {
-      icon: TrendingUp,
-      title: "Proven Impact",
+      icon: Zap,
+      title: "Full Solution",
       description:
-        "Deployed solutions cut downtime by 60% and improved logistics efficiency by 90%.",
-    },
-  ];
-
-  const stats = [
-    { number: 2000, suffix: "+", label: "Devices Deployed" },
-    { number: 15, suffix: "+", label: "Industries Served" },
-    { number: 10, suffix: "+", label: "Countries Covered" },
-    { number: 60, suffix: "%", label: "Downtime Reduction" },
-  ];
-
-  const milestones = [
-    {
-      year: "2021",
-      title: "SenseGrid Founded",
-      description: "Launched with the goal of smarter industrial monitoring.",
-    },
-    {
-      year: "2022",
-      title: "First Deployment",
-      description:
-        "DSI Production Monitor successfully implemented in factories.",
-    },
-    {
-      year: "2023",
-      title: "Cold Chain Tracking",
-      description: "DHL Asset Tracker deployed nationwide for logistics.",
-    },
-    {
-      year: "2024",
-      title: "Global Rollout",
-      description:
-        "Expanded SenseGrid to 10+ countries with enterprise clients.",
+        "From sensors to dashboards, SenseGrid provides the complete end-to-end IoT monitoring system.",
     },
   ];
 
@@ -115,11 +82,10 @@ const Home = () => {
                 >
                   SENSEGRID
                 </span>
-
                 <br />
-                <span className="text-3xl md:text-4xl">
-                  Smart IoT for Industry & Logistics
-                </span>
+                {/* <span className="text-3xl md:text-4xl">
+                  Smart IoT for Machine & Environment Monitoring
+                </span> */}
               </motion.h1>
 
               <motion.p
@@ -128,9 +94,12 @@ const Home = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                From factory floors to global cold chain logistics — SenseGrid
-                delivers real-time monitoring, asset tracking, and actionable
-                insights powered by IoT and GSM connectivity.
+                SenseGrid provides a full-featured Industrial IoT
+                platform—combining embedded intelligence, flexible connectivity,
+                and cloud control—from real-time device management to actionable
+                insights. Whether you're tracking equipment, monitoring energy
+                usage, or delivering predictive maintenance, SenseGrid scales
+                with your needs.
               </motion.p>
 
               <motion.div
@@ -151,7 +120,7 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.3 }}
@@ -160,6 +129,28 @@ const Home = () => {
               <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-2xl blur-xl"></div>
               <div className="relative">
                 <CircuitBoard3D />
+              </div>
+            </motion.div> */}
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="relative"
+            >
+              {/* Background Glow */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-500/20 to-teal-500/20 rounded-2xl blur-xl"></div>
+
+              {/* Video Container */}
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
+                <video
+                  src="/assets/videos/home.mp4" // Replace with your video path
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
           </div>
@@ -182,68 +173,13 @@ const Home = () => {
               About SenseGrid
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              SenseGrid is a next-generation IoT device and platform designed to
-              give businesses complete visibility into their operations. From
-              monitoring industrial machines to tracking assets across
-              countries, our solutions combine hardware, connectivity, and cloud
-              intelligence to deliver actionable insights in real-time.
+              SenseGrid is an IoT solution by SLT-Mobitel Digital Labs,
+              providing a complete monitoring system that combines rugged
+              sensors, reliable connectivity, and an intelligent cloud
+              dashboard. Trusted by enterprises like DSI and DHL, we deliver
+              real-time visibility, predictive insights, and measurable impact.
             </p>
           </motion.div>
-
-          {/* Mission / Values */}
-          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-md"
-            >
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                Our Mission
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                To simplify the way businesses collect and act on data by
-                providing rugged, reliable, and easy-to-deploy IoT devices
-                powered by secure cloud technology.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-md"
-            >
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                Why SenseGrid?
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                Unlike generic trackers, SenseGrid devices are tailored for
-                industrial and logistics environments. They are built rugged,
-                battery-efficient, and GSM-ready for deployments where Wi-Fi is
-                not an option.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl shadow-md"
-            >
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                Our Vision
-              </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                To be the trusted partner for global industries and logistics
-                providers, enabling them to operate smarter, safer, and more
-                sustainably through IoT innovation.
-              </p>
-            </motion.div>
-          </div> */}
         </div>
       </section>
 
@@ -258,12 +194,13 @@ const Home = () => {
             className="text-center mb-16"
           >
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-              Why You Choose SenseGrid?
+              Why Choose SenseGrid?
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Trusted by leading enterprises for industrial monitoring and
-              logistics tracking, our devices are proven in the field with
-              measurable impact.
+              Unlike generic monitoring tools, SenseGrid is designed for
+              industrial and logistics environments. From factory machines to
+              cold-chain warehouses, we deliver complete solutions with
+              enterprise-grade reliability.
             </p>
           </motion.div>
 
@@ -296,7 +233,6 @@ const Home = () => {
 
       {/* Testimonials */}
       <TestimonialSlider />
-
     </div>
   );
 };

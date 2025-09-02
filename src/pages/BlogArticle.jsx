@@ -140,6 +140,7 @@ const BlogArticle = () => {
     center, we can build cities that truly serve their citizens and future generations.
   </p>
 `,
+
   };
 
   return (

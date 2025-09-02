@@ -1,6 +1,25 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Cloud, BarChart3, Bell, Plug, Shield, Headphones } from "lucide-react";
+import {
+  Cloud,
+  BarChart3,
+  Bell,
+  Plug,
+  Shield,
+  Headphones,
+  Check,
+  ClipboardList,
+  Cpu,
+  Wrench,
+  CheckCircle,
+  FileText,
+  Factory,
+  Gauge,
+  PenTool,
+  CircuitBoard,
+  Layout,
+  Code,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Services = () => {
@@ -9,25 +28,25 @@ const Services = () => {
       icon: Cloud,
       title: "Cloud Monitoring",
       description:
-        "Real-time data collection and storage with scalable cloud infrastructure for all your IoT devices.",
+        "Real-time data ingestion and storage with globally scalable cloud infrastructure for all your devices.",
       features: [
-        "24/7 Data Collection",
-        "Scalable Storage",
-        "Global Access",
-        "API Integration",
+        "24/7 Uptime & Monitoring",
+        "Scalable Data Storage",
+        "Global Access Anywhere",
+        "Secure API Integration",
       ],
       color: "blue",
     },
     {
       icon: BarChart3,
-      title: "Predictive Analytics",
+      title: "Predictive Insights",
       description:
-        "AI-powered analytics to predict equipment failures and optimize maintenance schedules.",
+        "Advanced analytics to detect anomalies, forecast trends, and optimize asset performance.",
       features: [
-        "Machine Learning Models",
-        "Failure Prediction",
-        "Maintenance Optimization",
-        "Cost Reduction",
+        "Data-Driven Forecasting",
+        "Downtime Prevention",
+        "Resource Optimization",
+        "Operational Efficiency",
       ],
       color: "green",
     },
@@ -35,12 +54,12 @@ const Services = () => {
       icon: Bell,
       title: "Smart Alerts",
       description:
-        "Intelligent notification system with customizable triggers and multi-channel delivery.",
+        "Intelligent notification engine with configurable triggers and multi-channel delivery.",
       features: [
-        "Custom Thresholds",
-        "Multiple Channels",
-        "Priority Levels",
-        "Escalation Rules",
+        "Custom Threshold Settings",
+        "Email, SMS & App Alerts",
+        "Priority Escalations",
+        "Event-Based Rules",
       ],
       color: "orange",
     },
@@ -48,12 +67,12 @@ const Services = () => {
       icon: Plug,
       title: "Device Integration",
       description:
-        "Seamless integration with existing systems and third-party devices for unified monitoring.",
+        "Seamless onboarding and integration with existing systems, protocols, and third-party hardware.",
       features: [
-        "Protocol Support",
-        "Legacy Integration",
-        "Custom Adapters",
-        "Real-time Sync",
+        "Multi-Protocol Support",
+        "Legacy System Integration",
+        "Custom Connectors",
+        "Real-Time Sync",
       ],
       color: "purple",
     },
@@ -61,12 +80,12 @@ const Services = () => {
       icon: Shield,
       title: "Security Management",
       description:
-        "Enterprise-grade security with end-to-end encryption and compliance management.",
+        "Enterprise-grade protection with full-stack encryption, compliance, and audit capabilities.",
       features: [
-        "Data Encryption",
-        "Access Control",
-        "Compliance",
-        "Audit Trails",
+        "End-to-End Encryption",
+        "Role-Based Access",
+        "Compliance Frameworks",
+        "Complete Audit Trails",
       ],
       color: "red",
     },
@@ -74,12 +93,12 @@ const Services = () => {
       icon: Headphones,
       title: "Expert Support",
       description:
-        "24/7 technical support with dedicated account management and training services.",
+        "24/7 dedicated support with account managers, onboarding assistance, and continuous training.",
       features: [
-        "24/7 Support",
-        "Account Manager",
-        "Training",
-        "Documentation",
+        "Round-the-Clock Helpdesk",
+        "Dedicated Account Manager",
+        "Workshops & Training",
+        "Comprehensive Documentation",
       ],
       color: "teal",
     },
@@ -99,6 +118,29 @@ const Services = () => {
     };
     return colorMap[color] || colorMap.blue;
   };
+
+  // Workflow steps (horizontal flow)
+  const steps = [
+    { icon: ClipboardList, title: "Requirements elicitation" },
+    {
+      icon: Cpu,
+      title: "Electronics Development",
+      subSteps: [
+        { icon: Layout, title: "Electronics Layout" },
+        { icon: CircuitBoard, title: "PCB / Hardware Design" },
+        { icon: Code, title: "FW & SW Development" },
+      ],
+    },
+    { icon: Wrench, title: "Prototyping and assembly" },
+    { icon: CheckCircle, title: "Testing" },
+    {
+      icon: FileText,
+      title: "Composing design documentation for mass production",
+    },
+    { icon: Factory, title: "Manufacturing" },
+    { icon: Gauge, title: "Samples testing after production" },
+    { icon: PenTool, title: "Documenting changes and updates" },
+  ];
 
   return (
     <div className="pt-16">
@@ -120,8 +162,9 @@ const Services = () => {
             </h1>
 
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
-              Comprehensive IIoT solutions designed to transform your industrial
-              operations with cutting-edge technology and expert support.
+              Comprehensive IIoT services designed to modernize industrial
+              operations with scalable platforms, actionable insights, and
+              dedicated support.
             </p>
           </motion.div>
         </div>
@@ -179,8 +222,9 @@ const Services = () => {
       </section>
 
       {/* Process Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-20 bg-gray-50 dark:bg-gray-900 mb-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Desktop unchanged */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -192,63 +236,171 @@ const Services = () => {
               Our Implementation Process
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              We follow a proven methodology to ensure successful deployment and
-              maximum ROI from your IoT investment.
+              We follow a structured methodology to ensure smooth deployment and
+              maximum ROI for your IIoT investment.
             </p>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                step: "01",
-                title: "Assessment & Planning",
-                description:
-                  "We analyze your current infrastructure and define clear objectives for your IoT implementation.",
-                duration: "1-2 weeks",
-              },
-              {
-                step: "02",
-                title: "Deployment & Integration",
-                description:
-                  "Our team handles device installation, network setup, and integration with your existing systems.",
-                duration: "2-4 weeks",
-              },
-              {
-                step: "03",
-                title: "Training & Support",
-                description:
-                  "Comprehensive training for your team and ongoing support to ensure optimal performance.",
-                duration: "Ongoing",
-              },
-            ].map((phase, index) => (
-              <motion.div
-                key={phase.step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="relative"
-              >
-                <div className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg">
-                  <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                    {phase.step}
+          <div className="md:scale-100 sm:scale-80 scale-75 transform origin-top">
+            <div className="flex flex-wrap md:flex-nowrap items-start justify-center md:justify-between relative mt-24 gap-x-16 gap-y-12 text-gray-900 dark:text-white">
+              {steps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: i * 0.2 }}
+                  className="flex flex-col items-center relative w-48 md:w-48"
+                >
+                  {/* Icon */}
+                  <div className="relative">
+                    <step.icon
+                      className="w-16 h-16 text-green-400"
+                      strokeWidth={1.5}
+                    />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-                    {phase.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {phase.description}
+
+                  {/* Title */}
+                  <p className="mt-4 text-sm md:text-base max-w-[160px] text-center">
+                    {step.title}
                   </p>
-                  <div className="inline-flex items-center px-3 py-1 bg-blue-100 dark:bg-blue-900/20 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
-                    {phase.duration}
-                  </div>
-                </div>
 
-                {index < 2 && (
-                  <div className="hidden md:block absolute top-1/2 -right-4 w-8 h-0.5 bg-blue-300 dark:bg-blue-600 transform -translate-y-1/2"></div>
-                )}
-              </motion.div>
-            ))}
+                  {/* Sub-steps box */}
+                  {step.subSteps && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: i * 0.2 + 0.1 }}
+                      className="hidden md:flex absolute left-100 transform -translate-x-1/2 top-60 border-2 border-dashed border-green-400 rounded-xl p-4 flex space-x-6 dark:bg-slate-900"
+                    >
+                      {step.subSteps.map((sub, j) => (
+                        <div
+                          key={j}
+                          className="flex flex-col items-center w-32"
+                        >
+                          <sub.icon
+                            className="w-10 h-10 text-green-400"
+                            strokeWidth={1.5}
+                          />
+                          <p className="mt-2 text-xs">{sub.title}</p>
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+
+                  {/* Vertical double-headed arrow */}
+                  {step.subSteps &&
+                    step.title === "Electronics Development" && (
+                      <motion.svg
+                        className="hidden md:block absolute z-20 pointer-events-none"
+                        style={{
+                          left: "50%",
+                          top: "100%",
+                          transform: "translateX(-50%)",
+                          width: "20px",
+                          height: "120px",
+                        }}
+                        viewBox="0 0 20 120"
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: i * 0.2 + 0.2 }}
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-hidden="true"
+                      >
+                        <defs>
+                          <marker
+                            id="double-arrow-vertical"
+                            markerWidth="6"
+                            markerHeight="6"
+                            refX="3"
+                            refY="3"
+                            orient="auto"
+                          >
+                            <path d="M0 0 L6 3 L0 6 Z" fill="#34D399" />
+                          </marker>
+                          <marker
+                            id="double-arrow-vertical-start"
+                            markerWidth="6"
+                            markerHeight="6"
+                            refX="3"
+                            refY="3"
+                            orient="auto-start-reverse"
+                          >
+                            <path d="M0 0 L6 3 L0 6 Z" fill="#34D399" />
+                          </marker>
+                        </defs>
+
+                        <line
+                          x1="10"
+                          y1="10"
+                          x2="10"
+                          y2="100"
+                          stroke="#34D399"
+                          strokeWidth="1.5"
+                          strokeDasharray="1,2.9"
+                          markerStart="url(#double-arrow-vertical-start)"
+                          markerEnd="url(#double-arrow-vertical)"
+                        />
+                      </motion.svg>
+                    )}
+
+                  {/* Dotted horizontal arrow */}
+                  {i < steps.length - 1 && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: i * 0.2 + 0.3 }}
+                      className="absolute top-8 left-full -ml-0 w-16 flex items-center"
+                    >
+                      <div className="border-t-2 border-dotted border-green-400 flex-grow"></div>
+                      <div className="ml-[-4px] w-0 h-0 border-t-[6px] border-t-transparent border-l-[9px] border-l-green-400 border-b-[6px] border-b-transparent"></div>
+                    </motion.div>
+                  )}
+
+                  {/* Custom loop arrow */}
+                  {step.title === "Testing" && (
+                    <motion.svg
+                      className="hidden md:block absolute z-20 pointer-events-none"
+                      style={{
+                        left: "-305px",
+                        top: "-64px",
+                        width: "540px",
+                        height: "144px",
+                      }}
+                      viewBox="-40 0 240 144"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.6, delay: i * 0.2 + 0.4 }}
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <defs>
+                        <marker
+                          id="sg-arrow-small"
+                          markerWidth="6"
+                          markerHeight="6"
+                          refX="3"
+                          refY="3"
+                          orient="auto"
+                        >
+                          <path d="M0 0 L6 3 L0 6 Z" fill="#34D399" />
+                        </marker>
+                      </defs>
+
+                      <path
+                        d="M160 55 L160 16 L-150 16 L-150 55"
+                        stroke="#34D399"
+                        strokeWidth="1.5"
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeDasharray="1,2.9"
+                        markerEnd="url(#sg-arrow-small)"
+                      />
+                    </motion.svg>
+                  )}
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -266,8 +418,8 @@ const Services = () => {
               Ready to Transform Your Operations?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Let's discuss how our services can help you achieve your
-              industrial IoT goals and drive operational excellence.
+              Let’s discuss how our services can help you unlock efficiency,
+              resilience, and scalability across your industrial workflows.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
