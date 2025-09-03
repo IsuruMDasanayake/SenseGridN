@@ -64,8 +64,7 @@ const BlogListing = () => {
 
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-12">
               Explore the latest insights on IoT, smart solutions, and energy
-              innovations. Explore the latest insights on IoT, smart solutions,
-              and energy innovations.
+              innovations.
             </p>
           </motion.div>
         </div>
