@@ -134,7 +134,7 @@ const BlogArticle = () => {
       </div>
 
       {/* Comments Section */}
-      <div className="max-w-5xl mx-auto px-4 py-10 border-t border-gray-200 dark:border-gray-700">
+      {/* <div className="max-w-5xl mx-auto px-4 py-10 border-t border-gray-200 dark:border-gray-700">
         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           Comments
         </h3>
@@ -183,7 +183,7 @@ const BlogArticle = () => {
             </button>
           </div>
         </form>
-      </div>
+      </div> */}
     </div>
   );
 };
