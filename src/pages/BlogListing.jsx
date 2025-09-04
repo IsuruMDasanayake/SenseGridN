@@ -1,46 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { User, Calendar } from "lucide-react";
-
-// Example blog articles
-const blogArticles = [
-  {
-    id: 1,
-    title: "How IoT is Powering Smart Cities",
-    image: "/assets/images/blog/iot-smartcity.jpeg",
-    slug: "iot-smart-cities",
-    author: "Isuru M. Dasanayake",
-    authorImage: "/assets/images/authors/user.jpg",
-    date: "August 28, 2025",
-  },
-  {
-    id: 2,
-    title: "Top 5 Energy Monitoring Trends in 2025",
-    image: "/assets/images/blog/energy-trends.jpg",
-    slug: "energy-monitoring-trends-2025",
-    author: "Tech Insights",
-    authorImage: "/assets/images/authors/user2.jpg",
-    date: "August 15, 2025",
-  },
-  {
-    id: 3,
-    title: "Why SensGrid Makes Industries Smarter",
-    image: "/assets/images/blog/sensgrid-industries.jpg",
-    slug: "sensgrid-industries",
-    author: "Isuru M. Dasanayake",
-    authorImage: "/assets/images/authors/user3.jpg",
-    date: "August 10, 2025",
-  },
-  {
-    id: 4,
-    title: "The Future of IoT in Healthcare",
-    image: "/assets/images/blog/iot-healthcare.jpeg",
-    slug: "iot-healthcare",
-    author: "HealthTech Team",
-    authorImage: "/assets/images/authors/user4.jpg",
-    date: "July 30, 2025",
-  },
-];
+import blogArticles from "../data/blogData";
 
 const BlogListing = () => {
   return (
