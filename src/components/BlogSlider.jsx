@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import blogArticles from "../data/blogData";  // ✅ pull from data file
+import blogArticles from "../data/blogData"; // ✅ pull from data file
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -18,7 +18,6 @@ const BlogSlider = () => {
       viewport={{ once: true }}
     >
       <div className="w-[90%] bg-white dark:bg-gray-800 border dark:border-gray-600 rounded-2xl shadow-xl p-8 flex flex-col lg:flex-row">
-        
         {/* Left section */}
         <div className="lg:w-1/4 w-full mb-6 lg:mb-0 pr-6 flex flex-col justify-between">
           <div>
@@ -51,7 +50,11 @@ const BlogSlider = () => {
                   className="group overflow-hidden rounded-xl bg-gray-900 shadow-lg hover:shadow-xl transition-all"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <Link to={`/blog/${article.slug}`}>
+                  <a
+                    href={`/blog/${article.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <div className="relative">
                       <img
                         src={article.image}
@@ -64,7 +67,7 @@ const BlogSlider = () => {
                         </h6>
                       </div>
                     </div>
-                  </Link>
+                  </a>
                 </motion.div>
               </SwiperSlide>
             ))}
