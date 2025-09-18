@@ -48,7 +48,7 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      value: "+94112430010",
+      value: "+94 (70) 475 2330",
       description: "Mon-Fri from 8.30 AM to 4.30 PM",
     },
     {
@@ -140,7 +140,7 @@ const Contact = () => {
               </div>
 
               {/* Social Links */}
-              <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+              {/* <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
                   Follow Us
                 </h3>
@@ -170,7 +170,7 @@ const Contact = () => {
                     <Facebook className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   </a>
                 </div>
-              </div>
+              </div> */}
             </motion.div>
 
             {/* Contact Form */}

@@ -29,7 +29,7 @@ const Footer = () => {
               with our cutting-edge IIoT solutions.
             </p>
             <div className="flex space-x-4">
-              <a
+              {/* <a
                 href="#"
                 className="text-gray-400 hover:text-blue-400 transition-colors"
               >
@@ -46,7 +46,7 @@ const Footer = () => {
                 className="text-gray-400 hover:text-blue-400 transition-colors"
               >
                 <Github className="h-5 w-5" />
-              </a>
+              </a> */}
             </div>
           </div>
 
@@ -138,7 +138,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span className="text-gray-400">+94112430010</span>
+                <span className="text-gray-400">+94 (70) 475 2330</span>
               </li>
               <li className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
