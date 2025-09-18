@@ -147,7 +147,7 @@ const Footer = () => {
             </ul>
 
             {/* Newsletter */}
-            <div className="mt-6">
+            {/* <div className="mt-6">
               <h4 className="text-sm font-semibold mb-2">Newsletter</h4>
               <div className="flex">
                 <input
@@ -156,24 +156,24 @@ const Footer = () => {
                   className="flex-1 px-3 py-2 bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:border-blue-500 text-sm"
                 />
                 <button className="relative px-4 py-2 text-sm font-medium text-white rounded-r-lg overflow-hidden group">
-                  {/* Gradient Background */}
+                  
                   <span
                     className="absolute inset-0 bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
                    bg-[length:200%_100%] bg-[position:var(--x,0)_0] 
                    transition-all duration-500 group-hover:[--x:100%] rounded-r-lg"
                   ></span>
 
-                  {/* Button Text */}
+                  
                   <span className="relative z-10">Subscribe</span>
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
           <p>
-            &copy; 2025 SenseGrid. All rights reserved. | Privacy Policy | Terms of Service
+            &copy; 2025 SenseGrid. All rights reserved.
           </p>
         </div>
       </div>
