@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  sensegrid_preview:
+    build:
+      context: .
+      dockerfile: Dockerfile.preview     # must exist
+    container_name: sensegrid_preview
+    ports:
+      - "9000:80"                        # preview on port 9000
+    restart: always
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

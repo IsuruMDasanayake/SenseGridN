@@ -1,0 +1,102 @@
+version: "3.9"
+
+services:
+  traefik:
+    image: traefik:v3.1
+    container_name: traefik
+    restart: always
+    command:
+      - "--configFile=/etc/traefik/traefik.yml"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik/traefik.yml:/etc/traefik/traefik.yml:ro"
+      - "./traefik/acme.json:/letsencrypt/acme.json"
+    labels:
+      - "traefik.enable=true"
+
+      # Dashboard route — same domain as your main site
+      - "traefik.http.routers.traefik-dashboard.rule=Host(`sensegrid.sltdigitallab.lk`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      - "traefik.http.routers.traefik-dashboard.service=api@internal"
+      - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.traefik-dashboard.tls.certresolver=letsencrypt"
+
+      # Optional basic auth (recommended)
+      - "traefik.http.middlewares.traefik-auth.basicauth.users=admin:$$apr1$$H6uskkkW$$IgXLP6ewTrSuBkTrqE8wj/"
+      - "traefik.http.routers.traefik-dashboard.middlewares=traefik-auth"
+    networks:
+      - web
+
+  sensegrid_web:
+    build: .
+    container_name: sensegrid_web
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=web"
+      - "traefik.http.routers.sensegrid.rule=Host(`sensegrid.sltdigitallab.lk`)"
+      - "traefik.http.routers.sensegrid.entrypoints=websecure"
+      - "traefik.http.routers.sensegrid.tls.certresolver=letsencrypt"
+      - "traefik.http.services.sensegrid.loadbalancer.server.port=80"
+    networks:
+      - web
+
+  rybbit_backend:
+    image: ghcr.io/rybbit-io/rybbit-backend:latest
+    container_name: rybbit_backend
+    restart: always
+    environment:
+      - BASE_URL=https://sensegrid.sltdigitallab.lk/analytics
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET}
+      - DISABLE_SIGNUP=false
+    depends_on:
+      - postgres
+      - clickhouse
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rybbit-api.rule=Host(`sensegrid.sltdigitallab.lk`) && PathPrefix(`/analytics/api`)"
+      - "traefik.http.routers.rybbit-api.entrypoints=websecure"
+      - "traefik.http.routers.rybbit-api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.rybbit-api.loadbalancer.server.port=3001"
+    networks:
+      - web
+
+  rybbit_client:
+    image: ghcr.io/rybbit-io/rybbit-client:latest
+    container_name: rybbit_client
+    restart: always
+    depends_on:
+      - rybbit_backend
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rybbit-client.rule=Host(`sensegrid.sltdigitallab.lk`) && PathPrefix(`/analytics`)"
+      - "traefik.http.routers.rybbit-client.entrypoints=websecure"
+      - "traefik.http.routers.rybbit-client.tls.certresolver=letsencrypt"
+      - "traefik.http.services.rybbit-client.loadbalancer.server.port=3002"
+    networks:
+      - web
+
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    container_name: rybbit_clickhouse
+    restart: always
+    networks:
+      - web
+
+  postgres:
+    image: postgres:15
+    container_name: rybbit-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: rybbit
+      POSTGRES_PASSWORD: rybbit
+      POSTGRES_DB: analytics
+    networks:
+      - web
+
+networks:
+  web:
+    external: true

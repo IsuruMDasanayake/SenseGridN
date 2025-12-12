@@ -1,0 +1,33 @@
+name: Deploy to Server (Production Branch)
+
+on:
+  push:
+    branches: [ production ]
+  schedule:
+    - cron: '0 0 * * 0' # weekly SSL check
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: production   # <-- make sure checkout is on the production branch
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy and ensure SSL
+        run: |
+          ssh -o StrictHostKeyChecking=no root@152.42.249.28 "
+            cd /opt/sensegrid &&
+            git fetch origin &&
+            git reset --hard origin/production &&
+            docker-compose down &&
+            docker-compose up -d --build
+          "

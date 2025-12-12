@@ -1,0 +1,38 @@
+name: Deploy Preview (Development Branch)
+
+on:
+  push:
+    branches: [ development ]   # <-- triggers on development branch
+  workflow_dispatch:             # <-- manual trigger option
+
+jobs:
+  deploy_preview:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout development branch
+        uses: actions/checkout@v3
+        with:
+          ref: development
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy Preview to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no root@152.42.249.28 "
+            # Go to preview directory
+            cd /opt/sensegrid_preview || mkdir -p /opt/sensegrid_preview && cd /opt/sensegrid_preview
+
+            # Pull latest development branch
+            git fetch origin
+            git reset --hard origin/development
+
+            # Stop old preview container
+            docker-compose -f docker-compose.preview.yml down
+
+            # Build & run preview container on port 9000
+            docker-compose -f docker-compose.preview.yml up -d --build
+          "
