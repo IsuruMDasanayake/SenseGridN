@@ -6,8 +6,12 @@ import {
   MapPin,
   MessageCircle,
 } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
-const Footer = ({ isDarkMode = false }) => {
+const Footer = () => {
+  // Use global theme context
+  const { darkMode: isDarkMode } = useTheme();
+
   return (
     <footer id="footer" className={`${isDarkMode ? 'bg-gray-900' : 'bg-gray-900'} text-white`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

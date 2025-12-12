@@ -104,8 +104,8 @@ const Home = () => {
     <div className="relative py-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className={`h-px w-full ${isDarkMode
-            ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent'
-            : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
+          ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent'
+          : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
           }`} />
       </div>
     </div>
@@ -285,7 +285,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-       
+
       {/* <BlogSlider /> */}
 
       {/* About Section */}
@@ -387,7 +387,7 @@ const Home = () => {
 
       {/* Testimonials */}
       <div className="relative z-10 pb-16 md:pb-20">
-        <TestimonialSlider isDarkMode={isDarkMode} />
+        <TestimonialSlider />
       </div>
     </div>
   );
