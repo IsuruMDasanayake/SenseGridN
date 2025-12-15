@@ -18,57 +18,35 @@ export default function TestimonialSlider() {
   const lightTextColorClass = isDarkMode ? 'text-gray-400' : 'text-gray-600';
   const darkTextColorClass = isDarkMode ? 'text-white' : 'text-gray-900';
 
-  // Custom styles for smaller navigation arrows
-  const customStyles = `
-    .testimonial-swiper .swiper-button-next,
-    .testimonial-swiper .swiper-button-prev {
-      width: 32px;
-      height: 32px;
-      background: ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
-      border-radius: 50%;
-      backdrop-filter: blur(8px);
-    }
-    
-    .testimonial-swiper .swiper-button-next:after,
-    .testimonial-swiper .swiper-button-prev:after {
-      font-size: 14px;
-      font-weight: bold;
-      color: ${isDarkMode ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.6)'};
-    }
-    
-    .testimonial-swiper .swiper-button-next:hover,
-    .testimonial-swiper .swiper-button-prev:hover {
-      background: ${isDarkMode ? 'rgba(14, 165, 234, 0.3)' : 'rgba(14, 165, 234, 0.2)'};
-    }
-  `;
-
   const testimonials = [
     {
       id: 1,
-      name: "Rajesh Kumar",
-      role: "Operations Manager, ABC Manufacturing",
-      text: "SenseGrid transformed our factory monitoring. Real-time alerts helped us prevent costly downtime.",
+      name: "DSI Samson Group",
+      role: "Factory Partner",
+      text: "SenseGrid's real-time monitoring gave us actionable insights and peace of mind. It's a game-changer.",
+      image: "/assets/images/dsi.jpg",
       rating: 5,
     },
     {
       id: 2,
-      name: "Saman Perera",
-      role: "Facility Head, XYZ Warehousing",
-      text: "Temperature tracking is now effortless. We've reduced spoilage by 40% since implementing SenseGrid.",
+      name: "DHL Sri Lanka",
+      role: "Logistics Operations",
+      text: "The accuracy and ease of deployment impressed us from day one. We rely on SenseGrid across multiple sites.",
+      image: "/assets/images/dhl.png",
       rating: 5,
     },
     {
       id: 3,
-      name: "Nimal Fernando",
-      role: "Plant Engineer, DEF Industries",
-      text: "The dashboard is intuitive and the alerts are instant. Highly recommend for industrial monitoring.",
+      name: "Mobitel",
+      role: "Technology Partner",
+      text: "Mobitel’s integration with SenseGrid helped us enhance our industrial automation strategy significantly.",
+      image: "/assets/images/mobitel.jpg",
       rating: 5,
     },
   ];
 
   return (
     <section className="relative py-6">
-      <style>{customStyles}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Intro */}
         <motion.div
@@ -89,17 +67,19 @@ export default function TestimonialSlider() {
         {/* Swiper Slider */}
         <Swiper
           modules={[Navigation, Autoplay]}
+          loop={true}
+          speed={800}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           spaceBetween={30}
           slidesPerView={1}
-          navigation
-          autoplay={{ delay: 3000, disableOnInteraction: false }}
-          loop={true}
           breakpoints={{
-            640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 },
           }}
-          className="testimonial-swiper"
+          navigation={{
+            nextEl: ".slider-next",
+            prevEl: ".slider-prev",
+          }}
+          className="pb-12"
         >
           {testimonials.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>
@@ -124,23 +104,46 @@ export default function TestimonialSlider() {
                 </div>
 
                 {/* Testimonial Text */}
-                <p className={`${textColorClass} text-base mb-6 leading-relaxed italic text-center`}>
+                <p className={`${textColorClass} text-base mb-6 leading-relaxed italic`}>
                   "{testimonial.text}"
                 </p>
 
                 {/* Client Info */}
-                <div className="mt-auto">
-                  <h4 className={`${darkTextColorClass} font-semibold text-lg`}>
-                    {testimonial.name}
-                  </h4>
-                  <p className={`${lightTextColorClass} text-sm`}>
-                    {testimonial.role}
-                  </p>
+                <div className="flex items-center mt-auto">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-12 h-12 rounded-full mr-4 object-cover"
+                  />
+                  <div>
+                    <h4 className={`${darkTextColorClass} font-semibold text-lg`}>
+                      {testimonial.name}
+                    </h4>
+                    <p className={`${lightTextColorClass} text-sm`}>
+                      {testimonial.role}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {/* Custom Navigation */}
+        <div className="flex justify-center space-x-4 mt-0">
+          <button
+            className={`slider-prev px-6 py-3 rounded-full ${glassPanelClass} backdrop-blur-sm hover:scale-105 active:scale-95 transition-all text-xl`}
+            aria-label="Previous slide"
+          >
+            ◀
+          </button>
+          <button
+            className={`slider-next px-6 py-3 rounded-full ${glassPanelClass} backdrop-blur-sm hover:scale-105 active:scale-95 transition-all text-xl`}
+            aria-label="Next slide"
+          >
+            ▶
+          </button>
+        </div>
       </div>
     </section>
   );

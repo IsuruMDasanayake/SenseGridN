@@ -20,17 +20,63 @@ const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [errors, setErrors] = useState({});
+
   const glassPanelClass = isDarkMode ? 'bg-white/5 border-white/10' : 'bg-white/80 border-gray-200';
   const textColorClass = isDarkMode ? 'text-gray-200' : 'text-gray-800';
   const lightTextColorClass = isDarkMode ? 'text-gray-400' : 'text-gray-600';
   const darkTextColorClass = isDarkMode ? 'text-white' : 'text-gray-900';
 
+  const placeholders = {
+    name: "John Doe",
+    email: "john@example.com",
+    company: "Acme Corp",
+    phone: "+94XXXXXXXXX or 07XXXXXXXX",
+    subject: "Industrial Monitoring Inquiry",
+    message: "Tell us about your project requirements..."
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.name.trim()) newErrors.name = "Name is required";
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.company.trim()) newErrors.company = "Company is required";
+
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone is required";
+    } else {
+      const cleanPhone = formData.phone.replace(/\s/g, '');
+      const phoneRegex = /^(\+94\d{9}|07\d{8})$/;
+      if (!phoneRegex.test(cleanPhone)) {
+        newErrors.phone = "Invalid format. Use +947XXXXXXXX or 07XXXXXXXX";
+      }
+    }
+
+    if (!formData.subject.trim()) newErrors.subject = "Subject is required";
+    if (!formData.message.trim()) newErrors.message = "Message is required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: null });
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
+
     setIsLoading(true);
 
     const timestamp = new Date().toLocaleString("en-US", {
@@ -98,55 +144,65 @@ const ContactForm = () => {
             {["name", "email", "company", "phone"].map((field) => (
               <div key={field}>
                 <label className={`block ${textColorClass} mb-2 capitalize font-medium`}>
-                  {field}
+                  {field.replace('company', 'Company Name').replace('phone', 'Phone Number')}
+                  <span className="text-red-500 ml-1">*</span>
                 </label>
                 <input
                   type={field === "email" ? "email" : "text"}
                   name={field}
                   value={formData[field]}
                   onChange={handleInputChange}
-                  required={field === "name" || field === "email"}
-                  className={`w-full px-4 py-3 rounded-lg border ${glassPanelClass} ${textColorClass} backdrop-blur-sm
-                               focus:outline-none focus:ring-2 focus:ring-[rgb(14,165,234)] focus:border-transparent transition-all
-                               placeholder:${lightTextColorClass}`}
-                  placeholder={`Enter your ${field}`}
+                  className={`w-full px-4 py-3 rounded-lg border ${errors[field] ? 'border-red-500' : glassPanelClass
+                    } ${textColorClass} backdrop-blur-sm
+                    focus:outline-none focus:ring-2 focus:ring-[rgb(14,165,234)] focus:border-transparent transition-all
+                    placeholder:${lightTextColorClass}`}
+                  placeholder={placeholders[field]}
                 />
+                {errors[field] && (
+                  <p className="text-red-500 text-sm mt-1">{errors[field]}</p>
+                )}
               </div>
             ))}
           </div>
 
           <div>
             <label className={`block ${textColorClass} mb-2 font-medium`}>
-              Subject
+              Subject <span className="text-red-500 ml-1">*</span>
             </label>
             <input
               type="text"
               name="subject"
               value={formData.subject}
               onChange={handleInputChange}
-              required
-              className={`w-full px-4 py-3 rounded-lg border ${glassPanelClass} ${textColorClass} backdrop-blur-sm
-                           focus:outline-none focus:ring-2 focus:ring-[rgb(14,165,234)] focus:border-transparent transition-all
-                           placeholder:${lightTextColorClass}`}
-              placeholder="Enter subject"
+              className={`w-full px-4 py-3 rounded-lg border ${errors.subject ? 'border-red-500' : glassPanelClass
+                } ${textColorClass} backdrop-blur-sm
+                focus:outline-none focus:ring-2 focus:ring-[rgb(14,165,234)] focus:border-transparent transition-all
+                placeholder:${lightTextColorClass}`}
+              placeholder={placeholders.subject}
             />
+            {errors.subject && (
+              <p className="text-red-500 text-sm mt-1">{errors.subject}</p>
+            )}
           </div>
 
           <div>
             <label className={`block ${textColorClass} mb-2 font-medium`}>
-              Message
+              Message <span className="text-red-500 ml-1">*</span>
             </label>
             <textarea
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              required
               rows={6}
-              className={`w-full px-4 py-3 rounded-lg border ${glassPanelClass} ${textColorClass} backdrop-blur-sm
-                           focus:outline-none focus:ring-2 focus:ring-[rgb(14,165,234)] focus:border-transparent transition-all
-                           placeholder:${lightTextColorClass} resize-none`}
-              placeholder="Enter your message"
+              className={`w-full px-4 py-3 rounded-lg border ${errors.message ? 'border-red-500' : glassPanelClass
+                } ${textColorClass} backdrop-blur-sm
+                focus:outline-none focus:ring-2 focus:ring-[rgb(14,165,234)] focus:border-transparent transition-all
+                placeholder:${lightTextColorClass} resize-none`}
+              placeholder={placeholders.message}
             />
+            {errors.message && (
+              <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+            )}
           </div>
 
           <button
