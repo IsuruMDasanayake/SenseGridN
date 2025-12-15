@@ -14,6 +14,7 @@ import BlogListing from './pages/BlogListing';
 import Pricing from './pages/Pricing';
 import Contact from './pages/Contact';
 import BlogArticle from "./pages/BlogArticle";
+import Docs from "./pages/Docs";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/blog/:slug" element={<BlogArticle />} />
+              <Route path="/docs" element={<Docs />} />
             </Routes>
           </main>
           <Footer />

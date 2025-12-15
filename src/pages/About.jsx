@@ -113,9 +113,49 @@ const About = () => {
 
   const toggleZoom = () => setIsZoomed(!isZoomed);
 
-  const enterFullScreen = () => {
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Handle fullscreen change events from browser
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+    return () => {
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+      document.removeEventListener('webkitfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('mozfullscreenchange', handleFullscreenChange);
+      document.removeEventListener('MSFullscreenChange', handleFullscreenChange);
+    };
+  }, []);
+
+  const toggleFullScreen = () => {
     const elem = containerRef.current;
-    if (elem.requestFullscreen) elem.requestFullscreen();
+
+    if (!document.fullscreenElement) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(err => {
+          console.error(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+      } else if (elem.webkitRequestFullscreen) { /* Safari */
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) { /* IE11 */
+        elem.msRequestFullscreen();
+      }
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) { /* Safari */
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) { /* IE11 */
+        document.msExitFullscreen();
+      }
+    }
   };
 
   return (
@@ -177,15 +217,15 @@ const About = () => {
               </button>
             </div>
 
-            {/* Fullscreen */}
+            {/* Fullscreen Toggle */}
             <button
               className={`w-full py-3 rounded-lg font-semibold transition-all hover:scale-105 ${isDarkMode
                 ? "bg-[rgb(14,165,234)] text-white hover:bg-[rgb(11,209,209)]"
                 : "bg-[rgb(14,165,234)] text-white hover:bg-[rgb(11,209,209)]"
                 }`}
-              onClick={enterFullScreen}
+              onClick={toggleFullScreen}
             >
-              ⛶ Fullscreen
+              {isFullscreen ? "✕ Exit Fullscreen" : "⛶ Fullscreen"}
             </button>
           </div>
 
