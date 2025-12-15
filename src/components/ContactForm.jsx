@@ -134,9 +134,33 @@ const ContactForm = () => {
           <h3 className={`text-2xl font-bold ${darkTextColorClass} mb-2`}>
             Message Sent Successfully!
           </h3>
-          <p className={lightTextColorClass}>
+          <p className={`${lightTextColorClass} mb-8`}>
             Thank you for reaching out. We'll get back to you soon.
           </p>
+          <button
+            onClick={() => setIsSubmitted(false)}
+            className="relative group overflow-hidden px-8 py-3 rounded-lg text-white font-semibold
+             shadow-[0_0_20px_rgba(14,165,234,0.3)] hover:shadow-[0_0_30px_rgba(14,165,234,0.5)]
+             active:scale-95 transition-all"
+          >
+            {/* Gradient background */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500
+               bg-[length:200%_100%] bg-[position:var(--x,0)_0]
+               transition-all duration-500 group-hover:[--x:100%] rounded-lg"
+            ></div>
+
+            {/* Shine swipe effect */}
+            <div
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
+               translate-x-[-200%] group-hover:translate-x-[200%]
+               transition-transform duration-700"
+            ></div>
+
+            <span className="relative z-10">
+              Submit another response
+            </span>
+          </button>
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
