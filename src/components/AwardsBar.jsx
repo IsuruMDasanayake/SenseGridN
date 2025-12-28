@@ -61,35 +61,39 @@ const AwardsBar = () => {
   const awards = darkMode ? awardsDark : awardsLight;
 
   return (
-    <div className={`relative w-full max-w-5xl mx-auto mt-4 rounded-3xl ${glassPanelClass} p-6 shadow-2xl mt-14`}>
+    <div className="relative w-full max-w-5xl mx-auto mt-14 px-4 mb-14">
       <style>{customStyles}</style>
 
       <h2 className={`text-3xl sm:text-4xl font-bold text-center ${textColorClass} mb-14`}>
-        {/* Apply Gradient Text to Title */}
-        <span className="brand-gradient-text">
-          Awards & Recognitions
-        </span>
+        Awards & Recognitions
       </h2>
 
       {/* Awards Grid: Reduced gap on mobile for better fit */}
       <motion.div
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 place-items-center -mt-10"
+        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 place-items-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.5 }}
         transition={{ duration: 0.8 }}
       >
         {awards.map((award, i) => (
-          <motion.img
+          <motion.div
             key={i}
-            src={award}
-            alt={`Award ${i + 1}`}
-            // Conditional class to dim images slightly in Light Mode for contrast
-            className={`h-40 sm:h-48 lg:h-64 object-contain ${darkMode ? 'opacity-100' : 'opacity-100'}`}
-            initial={{ scale: 0.8 }}
-            animate={{ scale: 1 }}
+            className={`rounded-xl p-4 border transition-all duration-300 ${darkMode
+              ? 'bg-white/5 border-white/10 hover:border-sky-500/50 hover:shadow-[0_0_20px_rgba(14,165,234,0.3)]'
+              : 'bg-gray-50 border-gray-300 hover:border-sky-500 hover:shadow-[0_4_15px_rgba(14,165,234,0.2)]'
+              }`}
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
             transition={{ type: "spring", stiffness: 100, delay: i * 0.1 }}
-          />
+          >
+            <img
+              src={award}
+              alt={`Award ${i + 1}`}
+              className="h-40 sm:h-48 lg:h-64 object-contain w-full"
+            />
+          </motion.div>
         ))}
       </motion.div>
     </div>

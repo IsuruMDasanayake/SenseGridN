@@ -16,8 +16,8 @@ const Contact = () => {
     <div className="relative py-8">
       <div className="max-w-7xl mx-auto px-4">
         <div className={`h-px w-full ${isDarkMode
-            ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent'
-            : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
+          ? 'bg-gradient-to-r from-transparent via-white/20 to-transparent'
+          : 'bg-gradient-to-r from-transparent via-gray-300 to-transparent'
           }`} />
       </div>
     </div>
@@ -155,6 +155,9 @@ const Contact = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <FAQSection />
+
       {/* Contact Content */}
       <section className="relative py-0">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -214,34 +217,38 @@ const Contact = () => {
               className="lg:col-span-2"
             >
               <div className={`${glassPanelClass} rounded-2xl p-8 shadow-2xl`}>
-                {/* Header + Toggle Button */}
-                <div className="flex justify-between items-center mb-4">
-                  <h2 className={`text-3xl font-bold ${darkTextColorClass}`}>
+                {/* Header + Tabs */}
+                <div className="mb-6">
+                  <h2 className={`text-3xl font-bold ${darkTextColorClass} mb-6`}>
                     Fill Out the Form to Connect Us
                   </h2>
 
-                  <button
-                    onClick={() =>
-                      setActiveForm(
-                        activeForm === "custom" ? "iframe" : "custom"
-                      )
-                    }
-                    className="relative px-4 py-2 rounded-lg overflow-hidden group"
-                  >
-                    {/* Gradient background */}
-                    <span
-                      className="absolute inset-0 bg-gradient-to-r from-sky-500 via-teal-400 to-sky-500 
-               bg-[length:200%_100%] bg-[position:var(--x,0)_0] 
-               transition-all duration-500 group-hover:[--x:100%] rounded-lg"
-                    ></span>
+                  {/* Tab Navigation */}
+                  <div className={`flex gap-2 p-1 rounded-lg border ${isDarkMode ? 'border-white/10' : 'border-gray-300'}`}>
+                    <button
+                      onClick={() => setActiveForm("custom")}
+                      className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all duration-300 relative overflow-hidden group border-2 ${activeForm === "custom"
+                          ? "border-sky-500 text-sky-500"
+                          : isDarkMode
+                            ? "border-transparent text-gray-400 hover:text-gray-200 hover:border-white/10"
+                            : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
+                        }`}
+                    >
+                      <span className="relative">Custom Form</span>
+                    </button>
 
-                    {/* Button text */}
-                    <span className="relative text-white font-medium">
-                      {activeForm === "custom"
-                        ? "Use Office Form"
-                        : "Use Custom Form"}
-                    </span>
-                  </button>
+                    <button
+                      onClick={() => setActiveForm("iframe")}
+                      className={`flex-1 px-6 py-3 rounded-lg font-medium transition-all duration-300 relative overflow-hidden group border-2 ${activeForm === "iframe"
+                          ? "border-sky-500 text-sky-500"
+                          : isDarkMode
+                            ? "border-transparent text-gray-400 hover:text-gray-200 hover:border-white/10"
+                            : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
+                        }`}
+                    >
+                      <span className="relative">Office Form</span>
+                    </button>
+                  </div>
                 </div>
 
                 {/* Animated Form Switch */}
@@ -280,8 +287,7 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <FAQSection />
+
       <SectionDivider />
       {/* Map Section */}
       <section className="relative py-10 mb-10">
