@@ -158,6 +158,7 @@ const Docs = () => {
 
     // Custom Styles Injection (From Contact.jsx)
     const customStyles = `
+    /* Backgrounds */
     .tech-bg-dark {
       background-color: #0b1120;
       background-image: 
@@ -173,12 +174,14 @@ const Docs = () => {
       background-attachment: fixed;
     }
     
+    /* Glass Panels */
     .glass-panel-dark {
       background: rgba(17, 25, 40, 0.6);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
     }
     .glass-panel-light {
         background: rgba(255, 255, 255, 0.8);
@@ -186,8 +189,10 @@ const Docs = () => {
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(0, 0, 0, 0.08);
         box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
     }
     
+    /* Glass Panel Hover Effects */
     .glass-panel-dark:hover {
       border-color: rgba(14, 165, 234, 0.3);
       box-shadow: 0 8px 32px 0 rgba(14, 165, 234, 0.15);
@@ -197,28 +202,41 @@ const Docs = () => {
         box-shadow: 0 4px 20px 0 rgba(14, 165, 234, 0.1);
     }
 
+    /* Brand Gradient Text */
     .brand-gradient-text {
       background: linear-gradient(90deg, rgb(14,165,234), rgb(11,209,209));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
+    
+    /* PDF Canvas Shadows */
+    .react-pdf__Page__canvas {
+        border-radius: 4px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        margin: 0 auto;
+    }
+    /* Hide scrollbars for cleaner UI */
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Premium Glow & Grid Effects */
     .glow-blob {
       position: absolute;
-      filter: blur(80px);
+      filter: blur(90px);
       z-index: 0;
-      opacity: 0.3;
+      opacity: 0.25;
       border-radius: 50%;
+      pointer-events: none;
     }
-
     .tech-grid-overlay {
       background-size: 40px 40px;
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+      pointer-events: none;
     }
-  `;
+    `;
 
     // Calculate pages to show
     const leftPage = pageNumber;
