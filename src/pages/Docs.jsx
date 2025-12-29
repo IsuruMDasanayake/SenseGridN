@@ -359,14 +359,14 @@ const Docs = () => {
 
                                     <div className={`h-6 w-px mx-3 ${isDarkMode ? "bg-white/10" : "bg-black/10"}`}></div>
 
-                                    <a
+                                    {/* <a
                                         href={activeDoc.file}
                                         download
                                         className={`p-2.5 rounded-xl hover:bg-white/10 ${textSub} hover:text-[rgb(14,165,234)] transition-colors`}
                                         title="Download PDF"
                                     >
                                         <Download size={18} />
-                                    </a>
+                                    </a> */}
 
                                     <button
                                         onClick={() => setIsFullscreen(!isFullscreen)}
@@ -385,7 +385,7 @@ const Docs = () => {
                                     file={activeDoc.file}
                                     onLoadSuccess={onDocumentLoadSuccess}
                                     loading={
-                                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
+                                        <div className="absolute inset-0 flex flex-col items-center mt-60 justify-center gap-4">
                                             {/* Custom loader using CSS for the brand colors */}
                                             <div className="w-16 h-16 rounded-full border-4 border-t-[rgb(14,165,234)] border-r-transparent border-b-[rgb(11,209,209)] border-l-transparent animate-spin" />
                                             <span className={`text-sm font-medium tracking-wider uppercase ${textSub}`}>Loading Document...</span>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,10 @@ import {
   Cpu,
   Wifi,
   Zap,
+  Play,
+  Pause,
+  Volume2,
+  VolumeX
 } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
@@ -99,6 +103,51 @@ const Home = () => {
     ? "border-gray-600 hover:border-[rgb(11,209,209)] text-gray-300 hover:text-white hover:bg-[rgb(11,209,209)]/10"
     : "border-gray-300 hover:border-[rgb(11,209,209)] text-gray-700 hover:text-gray-900 hover:bg-[rgb(11,209,209)]/10";
   const navigate = useNavigate();
+
+  // Video States
+  const videoRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(true);
+
+  // Video Control Functions
+  const togglePlay = () => {
+    if (videoRef.current.paused) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    } else {
+      videoRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const handleTimeUpdate = () => {
+    setCurrentTime(videoRef.current.currentTime);
+  };
+
+  const handleProgressClick = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const clickedValue = (x / rect.width) * duration;
+    videoRef.current.currentTime = clickedValue;
+    setCurrentTime(clickedValue);
+  };
+
+  const handleVolumeChange = (e) => {
+    const value = parseFloat(e.target.value);
+    setVolume(value);
+    videoRef.current.volume = value;
+    setIsMuted(value === 0);
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  };
+
   // Section Divider Component
   const SectionDivider = () => (
     <div className="relative py-8">
@@ -256,7 +305,6 @@ const Home = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Side: Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -266,19 +314,76 @@ const Home = () => {
               {isDarkMode && (
                 <div className="absolute -inset-1 bg-gradient-to-br from-[rgb(14,165,234)] to-[rgb(11,209,209)] rounded-2xl blur-lg opacity-30 animate-pulse"></div>
               )}
-              <div className={`relative ${glassPanelClass} rounded-2xl p-2 shadow-2xl`}>
+              <div className={`relative ${glassPanelClass} rounded-2xl p-2 shadow-2xl group`}>
                 <div className={`relative rounded-xl overflow-hidden ${isDarkMode ? 'bg-black/50' : 'bg-white/50'} aspect-video`}>
                   <video
+                    ref={videoRef}
                     src="/assets/videos/home.mp4"
                     autoPlay
                     loop
-                    muted
+                    muted={isMuted}
                     playsInline
+                    onTimeUpdate={handleTimeUpdate}
+                    onLoadedMetadata={() => setDuration(videoRef.current.duration)}
                     className="w-full h-full object-cover opacity-90"
                   />
-                  {/* Overlay Lines - reduced opacity for mobile */}
-                  <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[rgb(11,209,209)] to-transparent opacity-30 ${!isDarkMode && 'opacity-50'}`}></div>
-                  <div className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[rgb(14,165,234)] to-transparent opacity-30 ${!isDarkMode && 'opacity-50'}`}></div>
+
+                  {/* Custom Controls Overlay */}
+                  <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="space-y-3">
+                      {/* Progress Bar */}
+                      <div className="relative h-1.5 w-full bg-white/20 rounded-full cursor-pointer group/progress" onClick={handleProgressClick}>
+                        <div
+                          className="absolute top-0 left-0 h-full bg-gradient-to-r from-[rgb(14,165,234)] to-[rgb(11,209,209)] rounded-full transition-all duration-200"
+                          style={{ width: `${(currentTime / duration) * 100}%` }}
+                        />
+                        <div
+                          className="absolute top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full shadow-lg opacity-0 group-hover/progress:opacity-100 transition-opacity"
+                          style={{ left: `${(currentTime / duration) * 100}%` }}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          {/* Play/Pause */}
+                          <button
+                            onClick={togglePlay}
+                            className="text-white hover:text-[rgb(11,209,209)] transition-colors p-1"
+                          >
+                            {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+                          </button>
+
+                          {/* Volume */}
+                          <div className="flex items-center gap-2 group/volume">
+                            <button
+                              onClick={() => setIsMuted(!isMuted)}
+                              className="text-white hover:text-[rgb(11,209,209)] transition-colors p-1"
+                            >
+                              {isMuted || volume === 0 ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                            </button>
+                            <input
+                              type="range"
+                              min="0"
+                              max="1"
+                              step="0.1"
+                              value={isMuted ? 0 : volume}
+                              onChange={handleVolumeChange}
+                              className="w-20 h-1 bg-white/20 rounded-full appearance-none cursor-pointer accent-[rgb(11,209,209)] opacity-0 group-hover/volume:opacity-100 transition-opacity"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Time display */}
+                        <div className="text-white/80 text-xs font-medium tabular-nums">
+                          {formatTime(currentTime)} / {formatTime(duration)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Overlay Lines (Decorative) */}
+                  <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[rgb(11,209,209)] to-transparent opacity-30 ${!isDarkMode && 'opacity-50'} pointer-events-none`}></div>
+                  <div className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[rgb(14,165,234)] to-transparent opacity-30 ${!isDarkMode && 'opacity-50'} pointer-events-none`}></div>
                 </div>
               </div>
             </motion.div>

@@ -78,7 +78,7 @@ const CaseStudies = () => {
       industry: "Logistics & Cold Storage",
       image: "/assets/images/dhl.png",
       shortDescription:
-        "DHL required a reliable system to monitor warehouse temperature conditions across multiple sites. With real-time visibility, alerts, and analytics, DHL ensured compliance and prevented losses in cold storage operations.",
+        "Facing challenges in maintaining precise temperature conditions across multiple warehouses, DHL needed a reliable monitoring solution to protect temperature-sensitive goods. SenseGrid deployed high-accuracy sensors with real-time alerts and centralized dashboards, enabling continuous visibility and compliance. As a result, DHL improved cold chain reliability, minimized product loss, and ensured consistent regulatory compliance across all connected sites.",
       problem:
         "Maintaining precise temperature conditions in warehouses was critical, but manual checks often led to delays, compliance risks, and potential losses in temperature-sensitive goods.",
       request:
@@ -108,7 +108,7 @@ const CaseStudies = () => {
       industry: "Industrial Manufacturing",
       image: "/assets/images/dsi.jpg",
       shortDescription:
-        "DSI integrated SenseGrid sensors to monitor machine health in real time. With current and infrared sensors connected to a unified dashboard, DSI reduced downtime and improved maintenance planning.",
+        "Frequent unexpected machine breakdowns were impacting production efficiency at DSI’s manufacturing facilities. To enable proactive maintenance, SenseGrid implemented current and infrared sensors connected to a real-time analytics dashboard. This allowed DSI to detect abnormalities early, reduce unplanned downtime, and significantly improve maintenance planning and operational efficiency.",
       problem:
         "Unexpected machine breakdowns were disrupting production and creating costly downtime in manufacturing operations.",
       request:
